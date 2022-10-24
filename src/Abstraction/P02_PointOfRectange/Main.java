@@ -12,14 +12,16 @@ public class Main {
         int bottomLeftY = Integer.parseInt(coordinates[1]);
         int topRightX = Integer.parseInt(coordinates[2]);
         int topRightY = Integer.parseInt(coordinates[3]);
-
+        Rectangle rectangle = new Rectangle(bottomLeftX, bottomLeftY, topRightX, topRightY);
         int numberOfPoints = Integer.parseInt(scanner.nextLine());
-        for (int i = 1; i <= numberOfPoints ; i++) {
+        for (int i = 1; i <= numberOfPoints; i++) {
             String[] dimension = scanner.nextLine().split("\\s+");
 
             int pointX = Integer.parseInt(dimension[0]);
             int pointY = Integer.parseInt(dimension[1]);
-            System.out.println(Contains(pointX, pointY, bottomLeftX, bottomLeftY, topRightX, topRightY));
+            Point point = new Point(pointX, pointY);
+            System.out.println(rectangle.contains(point));
+
         }
     }
 
