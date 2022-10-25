@@ -9,6 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String[] startingLights = scanner.nextLine().split("\\s+");
         int cycle = Integer.parseInt(scanner.nextLine());
+
         List<Light> trafficLight = new ArrayList<>();
         for (String light : startingLights) {
             Light currentLight = new Light(Color.valueOf(light));
