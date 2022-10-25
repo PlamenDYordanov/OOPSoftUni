@@ -15,23 +15,24 @@ public class Student {
         return this.name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getAge() {
         return this.age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public double getGrade() {
         return this.grade;
     }
 
-    public void setGrade(double grade) {
-        this.grade = grade;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(String.format("%s is %d years old. ", getName(), getAge(), getGrade()));
+        if (getGrade() >= 5.00){
+            sb.append("Excellent student.");
+        }else if (getGrade() < 5.00 && getGrade() >=3.50){
+            sb.append("Average student.");
+        }else {
+            sb.append("Very nice person.");
+        }
+        return sb.toString();
     }
 }
