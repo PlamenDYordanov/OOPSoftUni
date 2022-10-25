@@ -1,4 +1,4 @@
-package workingWithAbstraction.jediGalaxy;
+package Abstraction.Exercise.jediGalaxy;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -28,25 +28,12 @@ public class Main {
             int startRowEvil = evilDimension[0];
             int startColEvil = evilDimension[1];
 
-            while (startRowEvil >= 0 && startColEvil >= 0) {
-                if (startRowEvil < matrix.length && startColEvil < matrix[0].length) {
-                    matrix[startRowEvil][startColEvil] = 0;
-                }
-                startRowEvil--;
-                startColEvil--;
-            }
+            removeEvilNumber(matrix, startRowEvil, startColEvil);
 
             int startRowOfPlayer = playerDimension[0];
             int startColOfPlayer = playerDimension[1];
 
-            while (startRowOfPlayer >= 0 && startColOfPlayer < matrix[1].length) {
-                if (startRowOfPlayer < matrix.length && startColOfPlayer >= 0 && startColOfPlayer < matrix[0].length) {
-                    totalStars += matrix[startRowOfPlayer][startColOfPlayer];
-                }
-
-                startColOfPlayer++;
-                startRowOfPlayer--;
-            }
+            totalStars = getTotalStars(matrix, totalStars, startRowOfPlayer, startColOfPlayer);
 
             command = scanner.nextLine();
         }
@@ -54,5 +41,27 @@ public class Main {
         System.out.println(totalStars);
 
 
+    }
+
+    private static long getTotalStars(int[][] matrix, long totalStars, int startRowOfPlayer, int startColOfPlayer) {
+        while (startRowOfPlayer >= 0 && startColOfPlayer < matrix[1].length) {
+            if (startRowOfPlayer < matrix.length && startColOfPlayer >= 0 && startColOfPlayer < matrix[0].length) {
+                totalStars += matrix[startRowOfPlayer][startColOfPlayer];
+            }
+
+            startColOfPlayer++;
+            startRowOfPlayer--;
+        }
+        return totalStars;
+    }
+
+    private static void removeEvilNumber(int[][] matrix, int startRowEvil, int startColEvil) {
+        while (startRowEvil >= 0 && startColEvil >= 0) {
+            if (startRowEvil < matrix.length && startColEvil < matrix[0].length) {
+                matrix[startRowEvil][startColEvil] = 0;
+            }
+            startRowEvil--;
+            startColEvil--;
+        }
     }
 }

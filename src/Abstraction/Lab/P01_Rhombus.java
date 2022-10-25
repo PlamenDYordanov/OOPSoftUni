@@ -16,8 +16,6 @@ public class P01_Rhombus {
     private static void downPartOfRhombus(int size, int space) {
         space = 0;
         for (int row = 1; row < size; row++) {
-
-
             for (int spaces = 0; spaces <= space; spaces++) {
                 System.out.print(" ");
             }
