@@ -1,6 +1,4 @@
-package Encapsulation.Lab.P03_ValidationData;
-
-import java.text.DecimalFormat;
+package Encapsulation.Lab.P04_FirstAndReverseTeam;
 
 public class Person {
     private String firstName;
@@ -31,7 +29,7 @@ public class Person {
     }
 
     public void setAge(int age) {
-        if (age <= 0 ){
+        if (age <= 0) {
             throw new IllegalArgumentException("Age cannot be zero or negative integer");
         }
         this.age = age;
@@ -54,8 +52,8 @@ public class Person {
     }
 
     public void setSalary(double salary) {
-        if (salary < 460){
-            throw  new IllegalArgumentException("Salary cannot be less than 460 leva");
+        if (salary < 460) {
+            throw new IllegalArgumentException("Salary cannot be less than 460 leva");
         }
         this.salary = salary;
     }
@@ -71,7 +69,7 @@ public class Person {
 
     @Override
     public String toString() {
-        DecimalFormat formatter = new DecimalFormat("#.0####");
-        return String.format("%s %s gets %s leva", getFirstName(), getLastName(), formatter.format(getSalary()));
+
+        return String.format("%s %s gets %f leva", getFirstName(), getLastName(), getSalary());
     }
 }
