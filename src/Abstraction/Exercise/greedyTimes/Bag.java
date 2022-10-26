@@ -14,7 +14,7 @@ public class Bag {
 
     public Bag(long capacity) {
         this.capacity = capacity;
-        this.item = new HashMap<>();
+        this.item = new LinkedHashMap<>();
 
     }
 
