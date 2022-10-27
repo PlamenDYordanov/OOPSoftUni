@@ -1,4 +1,4 @@
-package P03_ShoppingSpree;
+package Encapsulation.Exercise.P03_ShoppingSpree;
 
 public class Product {
     private String name;
