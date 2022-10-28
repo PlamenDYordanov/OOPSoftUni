@@ -1,4 +1,4 @@
-package P04_PizzaCalories;
+package Encapsulation.Exercise.P04_PizzaCalories;
 
 import java.util.Scanner;
 

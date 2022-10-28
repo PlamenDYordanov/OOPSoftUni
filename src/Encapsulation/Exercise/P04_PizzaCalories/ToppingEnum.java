@@ -1,4 +1,4 @@
-package P04_PizzaCalories;
+package Encapsulation.Exercise.P04_PizzaCalories;
 
 public enum ToppingEnum {
     Meat(1.2),
