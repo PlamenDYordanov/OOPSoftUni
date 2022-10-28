@@ -1,7 +1,9 @@
 package P04_PizzaCalories;
 
+import java.util.Arrays;
+
 public class Topping {
-    private String toppingType;
+    private ToppingEnum toppingType;
     private double weight;
 
     public Topping(String toppingType, double weight) {
@@ -10,8 +12,9 @@ public class Topping {
     }
 
     private void setToppingType(String toppingType) {
-        if (toppingType.equals("Cheese") || toppingType.equals("Meat") || toppingType.equals("Veggies") || toppingType.equals("Sauce")){
-            this.toppingType = toppingType;
+        boolean toppingIsExist = Arrays.stream(ToppingEnum.values()).anyMatch(e -> e.name().equals(toppingType));
+        if (toppingIsExist){
+            this.toppingType = ToppingEnum.valueOf(toppingType);
         }else {
             throw new IllegalArgumentException("Cannot place " + toppingType + " on top of your pizza.");
         }
@@ -24,17 +27,11 @@ public class Topping {
         this.weight = weight;
     }
     public double calculateCalories() {
-        double totalToppingCalories = 0;
-        if (this.toppingType.equals("Meat")){
-            totalToppingCalories += (this.weight * 2) * 1.2;
-        }else if (this.toppingType.equals("Veggies")){
-            totalToppingCalories += (this.weight * 2) * 0.8;
-        }else if (this.toppingType.equals("Cheese")){
-            totalToppingCalories += (this.weight * 2) * 1.1;
-        }else if (this.toppingType.equals("Sauce")){
-            totalToppingCalories += (this.weight * 2) * 0.9;
-        }
-        return totalToppingCalories;
+
+        return 2 * weight * getToppingModifier();
+    }
+    private double getToppingModifier() {
+        return toppingType.getModifier();
     }
 }
 
