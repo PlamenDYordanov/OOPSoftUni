@@ -1,0 +1,1 @@
+ Abstraction only shows the functionality to the user.

@@ -1,4 +1,4 @@
-package P05_FootballGenerator;
+package Encapsulation.Exercise.P05_FootballGenerator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ public class Main {
         String command = scanner.nextLine();
 
         Map<String, Team> teamMap = new LinkedHashMap<>();
-        
+
         while (!command.equals("END")) {
 
             try {

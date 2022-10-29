@@ -1,0 +1,2 @@
+Mutable - can be altered
+Immutable - can't be altered(change) 

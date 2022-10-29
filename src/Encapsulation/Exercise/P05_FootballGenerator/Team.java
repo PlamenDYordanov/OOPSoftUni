@@ -1,4 +1,4 @@
-package P05_FootballGenerator;
+package Encapsulation.Exercise.P05_FootballGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

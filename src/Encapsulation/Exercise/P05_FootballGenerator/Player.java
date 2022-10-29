@@ -1,4 +1,4 @@
-package P05_FootballGenerator;
+package Encapsulation.Exercise.P05_FootballGenerator;
 
 public class Player {
     private String name;
