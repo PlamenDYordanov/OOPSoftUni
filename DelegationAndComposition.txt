@@ -1,0 +1,7 @@
+class Laptop {
+Monitor monitor
+public void increaseBrightness{
+this.monitor.increaseBrightness
+}
+}
+Тук имаме делегация и композиция

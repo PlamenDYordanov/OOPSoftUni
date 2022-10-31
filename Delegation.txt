@@ -1,0 +1,11 @@
+Laptop {
+public void increaseBrightness(Monitor monitor){
+monitor.increaseBrightness
+Извършваме само едно действие!!!! Ако е повече от 1 вече не говорим за делегация!!!
+}
+public void decreaseBrightness (Monitor monitor){
+monitor.dim
+Извършваме само едно действие!!!! Ако е повече от 1 вече не говорим за делегация!!!
+}
+Делегацията я постигаме чрез извикване на друг метод от друг клас, който
+върши цялата работа.

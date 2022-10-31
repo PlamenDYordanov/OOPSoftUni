@@ -1,0 +1,9 @@
+class Laptop {
+Monitor monitor;
+Touchpad touchpad;
+Keyboard keyboard;
+}
+
+използвасе когато не може да се използва Inheritance:
+Например:
+Laptop extend monitor () // Лаптопът не е монитор!!!!
