@@ -1,4 +1,4 @@
-package P04_NeedForSpeed;
+/*package P04_NeedForSpeed;
 
 public class SportCar extends Car{
     static final double DEFAULT_FUEL_CONSUMPTION = 10;
@@ -6,4 +6,4 @@ public class SportCar extends Car{
         super(fuel, horsePower);
         super.setFuelConsumption(DEFAULT_FUEL_CONSUMPTION);
     }
-}
+}*/
