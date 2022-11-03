@@ -1,1 +1,8 @@
  Abstraction only shows the functionality to the user.
+Описваме само това което ни трябва.
+Use only information relevent to out project.
+Focusing on what the object does insted of how it does it.
+Hide implementation.
+Use calasses and methods
+
+

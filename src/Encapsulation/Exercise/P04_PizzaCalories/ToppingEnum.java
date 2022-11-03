@@ -15,5 +15,5 @@ public enum ToppingEnum {
     public double getModifier() {
         return modifier;
     }
-    
+
 }
