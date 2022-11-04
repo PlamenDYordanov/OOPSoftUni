@@ -1,3 +1,4 @@
+/*
 package SayHello;
 
 public class European implements Person{
@@ -17,3 +18,4 @@ public class European implements Person{
         return "Hello";
     }
 }
+*/

@@ -1,5 +1,4 @@
-/*
-package SayHello;
+package SayHelloExtended;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,4 +22,3 @@ public class Main {
     }
 
 }
-*/
