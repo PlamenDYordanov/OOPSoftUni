@@ -1,4 +1,4 @@
-package borderControl;
+package Interfaces.Lab.P05_BorderControl;
 
 import java.util.ArrayList;
 import java.util.List;
