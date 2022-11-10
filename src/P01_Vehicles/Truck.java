@@ -1,6 +1,6 @@
 package P01_Vehicles;
 
-public class Truck extends  BaseVehicle{
+public class Truck extends BaseVehicle {
 
     private static final double ADDITIONAL_AC_CONSUMPTION = 1.6;
 
@@ -9,9 +9,10 @@ public class Truck extends  BaseVehicle{
     }
 
 
-
     @Override
     public void refueling(double refuelQuantity) {
-        setFuelQuantity(getFuelQuantity() + (refuelQuantity * 0.95));
+        refuelQuantity = refuelQuantity * 0.95;
+        super.refueling(refuelQuantity);
     }
 }
+

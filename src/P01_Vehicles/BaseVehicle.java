@@ -20,7 +20,9 @@ public abstract class BaseVehicle {
         }
     }
 
-    public abstract void refueling(double refuelQuantity);
+    public void refueling(double refuelQuantity){
+        setFuelQuantity(getFuelQuantity() + refuelQuantity);
+    }
 
     public double getFuelQuantity() {
         return fuelQuantity;
