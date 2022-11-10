@@ -1,0 +1,12 @@
+Способността на една променлива да приема различни форми.
+Чрез Overriding наричаме го runtime 
+Overriding:
+Имаме метод с еднаква сигнатура(sum(double d1, int d2) == sum(double d1, int d2))
+, който  презаписваме в друг клас(надолу в йерархията).
+Тряба да имаме йерархия. 
+private, static and final не могат да бъда override.
+
+Чрез overloading 
+Тук имаме еднаквo име с различни аргументи
+public double sum(double d1, int d2)
+public double sum(double d1, double d2)
