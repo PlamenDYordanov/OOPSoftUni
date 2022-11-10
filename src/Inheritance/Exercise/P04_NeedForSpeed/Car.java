@@ -1,3 +1,4 @@
+/*
 package P04_NeedForSpeed;
 
 public class Car extends Vehicle{
@@ -7,3 +8,4 @@ public class Car extends Vehicle{
         super.setFuelConsumption(DEFAULT_FUEL_CONSUMPTION);
     }
 }
+*/

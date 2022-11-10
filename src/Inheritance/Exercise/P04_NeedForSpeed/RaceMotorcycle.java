@@ -1,3 +1,4 @@
+/*
 package P04_NeedForSpeed;
 
 public class RaceMotorcycle extends Motorcycle {
@@ -8,3 +9,4 @@ public class RaceMotorcycle extends Motorcycle {
         super.setFuelConsumption(DEFAULT_FUEL_CONSUMPTION);
     }
 }
+*/

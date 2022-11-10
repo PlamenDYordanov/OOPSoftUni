@@ -1,3 +1,4 @@
+/*
 package animals;
 
 import java.util.Scanner;
@@ -46,3 +47,4 @@ public class Main {
         }
     }
 }
+*/

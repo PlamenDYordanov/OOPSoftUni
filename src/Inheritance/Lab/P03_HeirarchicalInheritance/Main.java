@@ -1,3 +1,4 @@
+/*
 package P03_HeirarchicalInheritance;
 
 public class Main {
@@ -12,3 +13,4 @@ public class Main {
         cat.meow();
     }
 }
+*/
