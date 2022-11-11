@@ -1,3 +1,4 @@
+/*
 package zoo;
 
 public class Gorilla extends Mammal{
@@ -5,3 +6,4 @@ public class Gorilla extends Mammal{
         super(name);
     }
 }
+*/

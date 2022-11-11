@@ -1,3 +1,4 @@
+/*
 package restaurant;
 
 import java.math.BigDecimal;
@@ -11,3 +12,4 @@ public class Cake extends Dessert {
         super(name, CAKE_PRICE, CAKE_GRAMS, CAKE_CALORIES);
     }
 }
+*/

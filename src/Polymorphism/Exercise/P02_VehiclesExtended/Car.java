@@ -1,4 +1,4 @@
-package P01_Vehicles;
+package Polymorphism.Exercise.P02_VehiclesExtended;
 
 public class Car extends BaseVehicle {
     private static final double ADDITIONAL_AC_CONSUMPTION = 0.9;

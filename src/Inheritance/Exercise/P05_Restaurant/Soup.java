@@ -1,3 +1,4 @@
+/*
 package restaurant;
 
 import java.math.BigDecimal;
@@ -7,3 +8,4 @@ public class Soup extends Starter{
         super(name, price, gram);
     }
 }
+*/
