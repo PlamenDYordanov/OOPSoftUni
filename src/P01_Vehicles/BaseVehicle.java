@@ -7,6 +7,7 @@ public class BaseVehicle {
     private double fuelConsumption;
 
     private double tankCapacity;
+    private boolean isEmpty;
 
     public BaseVehicle(double fuelQuantity, double fuelConsumption, double tankCapacity) {
         setFuelQuantity(fuelQuantity);
@@ -63,8 +64,17 @@ public class BaseVehicle {
         this.tankCapacity = tankCapacity;
     }
 
+    public boolean isEmpty() {
+        return isEmpty;
+    }
+
+    public void setEmpty(boolean empty) {
+        isEmpty = empty;
+    }
+
     @Override
     public String toString() {
         return String.format("%s: %.2f", getClass().getSimpleName(), getFuelQuantity());
     }
+
 }
