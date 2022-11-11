@@ -2,26 +2,37 @@ package P01_Vehicles;
 
 import java.text.DecimalFormat;
 
-public abstract class BaseVehicle {
+public class BaseVehicle {
     private double fuelQuantity;
     private double fuelConsumption;
 
-    public BaseVehicle(double fuelQuantity, double fuelConsumption) {
-        this.fuelQuantity = fuelQuantity;
-        this.fuelConsumption = fuelConsumption;
+    private double tankCapacity;
+
+    public BaseVehicle(double fuelQuantity, double fuelConsumption, double tankCapacity) {
+        setFuelQuantity(fuelQuantity);
+        setFuelConsumption(fuelConsumption);
+        setTankCapacity(tankCapacity);
+
     }
-    public  void driving(double distance){
+
+    public void driving(double distance) {
         if (getFuelQuantity() >= distance * getFuelConsumption()) {
             setFuelQuantity(getFuelQuantity() - distance * getFuelConsumption());
             DecimalFormat decimalFormat = new DecimalFormat("##.##");
-            System.out.println(String.format("%s travelled %s km", getClass().getSimpleName(),decimalFormat.format(distance)));
-        }else {
+            System.out.println(String.format("%s travelled %s km", getClass().getSimpleName(), decimalFormat.format(distance)));
+        } else {
             System.out.println(String.format("%s needs refueling", getClass().getSimpleName()));
         }
     }
 
-    public void refueling(double refuelQuantity){
-        setFuelQuantity(getFuelQuantity() + refuelQuantity);
+    public void refueling(double refuelQuantity) {
+        if (getTankCapacity() < refuelQuantity + getFuelQuantity()) {
+            System.out.println("Cannot fit fuel in tank");
+        } else if (refuelQuantity <= 0) {
+            System.out.println("Fuel must be a positive number");
+        } else {
+            setFuelQuantity(getFuelQuantity() + refuelQuantity);
+        }
     }
 
     public double getFuelQuantity() {
@@ -29,7 +40,11 @@ public abstract class BaseVehicle {
     }
 
     public void setFuelQuantity(double fuelQuantity) {
-        this.fuelQuantity = fuelQuantity;
+        if (fuelQuantity > 0) {
+            this.fuelQuantity = fuelQuantity;
+        } else {
+            System.out.println("Fuel must be positive number");
+        }
     }
 
     public double getFuelConsumption() {
@@ -40,8 +55,16 @@ public abstract class BaseVehicle {
         this.fuelConsumption = fuelConsumption;
     }
 
+    public double getTankCapacity() {
+        return tankCapacity;
+    }
+
+    public void setTankCapacity(double tankCapacity) {
+        this.tankCapacity = tankCapacity;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s: %.2f" ,getClass().getSimpleName(), getFuelQuantity());
+        return String.format("%s: %.2f", getClass().getSimpleName(), getFuelQuantity());
     }
 }
