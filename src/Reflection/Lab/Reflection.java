@@ -1,5 +1,8 @@
 package Reflection.Lab;
 
+import Reflection.Lab.Anotation.Author;
+import Reflection.Lab.Anotation.Subject;
+
 import java.io.Serializable;
 
 public class Reflection implements Serializable {
@@ -46,19 +49,18 @@ public class Reflection implements Serializable {
     private void setWebAddress(String webAddress) {
         this.webAddress = webAddress;
     }
-
     public String getEmail() {
         return email;
     }
-
+    @Author(name = "Gosho")
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @Author(name = "Plamen")
     protected final int getZip() {
         return zip;
     }
-
+    @Author(name = "Dimo")
     private void setZip(int zip) {
         this.zip = zip;
     }
