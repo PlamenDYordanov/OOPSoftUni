@@ -11,7 +11,7 @@ import static java.lang.reflect.Modifier.isPublic;
 
 public class P03_HighQualityMistakes {
     public static void main(String[] args) {
-
+        //test
         Class reflection = Reflection.class;
         Field[] fields = reflection.getDeclaredFields();
         Method[] methods = reflection.getDeclaredMethods();

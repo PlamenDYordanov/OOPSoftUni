@@ -6,12 +6,11 @@ import java.util.Scanner;
 
 public class P02_GettersSetters {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-        Scanner scanner = new Scanner(System.in);
+
+        //test
         Class reflection = Reflection.class;
-
         Method[] methods = reflection.getDeclaredMethods();
-
-       Arrays.stream(methods).filter(method -> method.getName().startsWith("get") && method.getParameterCount() == 0)
+        Arrays.stream(methods).filter(method -> method.getName().startsWith("get") && method.getParameterCount() == 0)
                 .sorted((left, right) -> {
                     int result = left.getName().compareTo(right.getName());
                     return result;
