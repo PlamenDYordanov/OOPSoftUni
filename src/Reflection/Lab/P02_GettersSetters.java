@@ -1,12 +1,7 @@
 
 package Reflection.Lab;
-
-import Reflection.Lab.Anotation.Subject;
-
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.Scanner;
-
 public class P02_GettersSetters {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
