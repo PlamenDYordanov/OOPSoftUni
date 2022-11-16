@@ -4,7 +4,7 @@ package SayHello;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Reflection.Main {
     public static void main(String[] args) {
         List<Person> persons = new ArrayList<>();
 

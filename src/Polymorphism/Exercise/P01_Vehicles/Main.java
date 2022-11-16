@@ -3,7 +3,7 @@ package Polymorphism.Exercise.P01_Vehicles;
 
 import java.util.Scanner;
 
-public class Main {
+public class Reflection.Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

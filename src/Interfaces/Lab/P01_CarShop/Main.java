@@ -1,7 +1,7 @@
 /*
 package Interfaces.Exercise.CarShop;
 
-public class Main{
+public class Reflection.Main{
 
     public static void main(String[] args) {
         Car seat = new Seat("Leon", "gray", 110, "Spain");

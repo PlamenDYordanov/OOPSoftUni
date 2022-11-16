@@ -1,7 +1,7 @@
 /*
 package P03_HeirarchicalInheritance;
 
-public class Main {
+public class Reflection.Main {
 
     public static void main(String[] args) {
         Dog dog = new Dog();

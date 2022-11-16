@@ -1,4 +1,4 @@
-public class Main {
+/*public class Reflection.Main {*/
 
 
     /*public static void main(String[] args) {
@@ -6,4 +6,4 @@ public class Main {
         dog.eat();
         dog.bark();
     }*/
-}
+
