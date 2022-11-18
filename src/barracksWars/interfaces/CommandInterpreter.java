@@ -4,5 +4,5 @@ import java.lang.reflect.InvocationTargetException;
 
 public interface CommandInterpreter {
 
-	Executable interpretCommand(String[] data, String commandName) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException;
+	Executable interpretCommand(String[] data, String commandName);
 }

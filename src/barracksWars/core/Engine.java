@@ -37,8 +37,7 @@ public class Engine implements Runnable {
 				System.out.println(result);
 			} catch (RuntimeException e) {
 				System.out.println(e.getMessage());
-			} catch (IOException | ExecutionControl.NotImplementedException | ClassNotFoundException |
-					 NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+			} catch (IOException  e) {
 				e.printStackTrace();
 			}
 		}
