@@ -1,3 +1,4 @@
+/*
 package P02_MultipleImplementation;
 
 public class Citizen implements Person, Birthable, Identifiable {
@@ -38,3 +39,4 @@ public class Citizen implements Person, Birthable, Identifiable {
         return "";
     }
 }
+*/

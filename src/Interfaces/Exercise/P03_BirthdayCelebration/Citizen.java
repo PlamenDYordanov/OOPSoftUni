@@ -1,6 +1,6 @@
-package P03_BirthdayCelebration;
+package Interfaces.Exercise.P03_BirthdayCelebration;
 
-public class Citizen implements Birthable, Identifiable {
+public class Citizen implements P03_BirthdayCelebration.Birthable, FoodShortage.Identifiable {
     private String name;
     private int age;
     private String id;

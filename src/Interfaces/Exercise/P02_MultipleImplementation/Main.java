@@ -1,3 +1,4 @@
+/*
 package P02_MultipleImplementation;
 
 import java.lang.reflect.Method;
@@ -27,3 +28,4 @@ public class Main {
 
 
 }
+*/
