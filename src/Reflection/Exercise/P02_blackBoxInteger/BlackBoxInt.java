@@ -1,4 +1,4 @@
-package blackBoxInteger;
+package Reflection.Exercise.P02_blackBoxInteger;
 
 public class BlackBoxInt {
 
