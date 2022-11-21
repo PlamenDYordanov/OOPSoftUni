@@ -9,7 +9,9 @@ import barracksWars.core.Engine;
 import barracksWars.core.factories.UnitFactoryImpl;
 import barracksWars.data.UnitRepository;
 
-public class Main {
+import java.util.Iterator;
+
+public class Main extends Throwable {
 
     public static void main(String[] args) {
         Repository repository = new UnitRepository();
@@ -17,5 +19,6 @@ public class Main {
         CommandInterpreter commandInterpreter = new CommandInterpreterImpl(repository, unitFactory);
         Runnable engine = new Engine(commandInterpreter);
         engine.run();
+
     }
 }
