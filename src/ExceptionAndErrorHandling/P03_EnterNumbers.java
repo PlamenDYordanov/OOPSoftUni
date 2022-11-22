@@ -13,6 +13,8 @@ public class P03_EnterNumbers {
         List<String> listOfNumbers = new ArrayList<>();
         while (listOfNumbers.size() < 10) {
             String input = scanner.nextLine();
+            int a = 4;
+            System.out.println();
             readNumbers(input, start, lastNumber, listOfNumbers);
         }
         System.out.println(String.join(", ",listOfNumbers));
