@@ -1,3 +1,4 @@
+/*
 package p01_Database;
 
 import org.junit.Assert;
@@ -66,4 +67,4 @@ public class DatabaseTest {
         Assert.assertArrayEquals(database.getElements(), testArr);
     }
 
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package p01_Database;
 
 import javax.naming.OperationNotSupportedException;
@@ -62,3 +63,4 @@ public class Database {
         this.index = elements.length - 1;
     }
 }
+*/
