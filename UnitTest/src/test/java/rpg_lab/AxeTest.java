@@ -14,11 +14,11 @@ public class AxeTest {
     private Dummy dummy;
     @Before
     public void initializeTestObjects() {
-    this.axe = new Axe(ATTACK_POINTS_AXE, DURABILITY_POINTS_AXE);
-    this.dummy = new Dummy(DUMMY_HEALTH, DUMMY_XP);
+        this.axe = new Axe(ATTACK_POINTS_AXE, DURABILITY_POINTS_AXE);
+        this.dummy = new Dummy(DUMMY_HEALTH, DUMMY_XP);
     }
 
-@Test
+    @Test
     public void testWeaponLoseDurabilityPointsAfterAttack() {
 
         axe.attack(dummy);
@@ -28,9 +28,9 @@ public class AxeTest {
     }
     @Test(expected =  IllegalStateException.class)
     public void testAttackWithBrokenWeapon(){
-    Axe axe = new Axe(ATTACK_POINTS_AXE,DURABILITY_BROKEN_AXE);
+        Axe axe = new Axe(ATTACK_POINTS_AXE,DURABILITY_BROKEN_AXE);
 
-    axe.attack(dummy);
+        axe.attack(dummy);
     }
 
 }

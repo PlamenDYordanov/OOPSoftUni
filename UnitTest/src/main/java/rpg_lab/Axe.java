@@ -1,6 +1,6 @@
 package rpg_lab;
 
-public class Axe {
+public class Axe implements Weapon {
     public static final int DURABILITY_DECREASE_AFTER_HIT = 1;
     private int attackPoints;
     private int durabilityPoints;
@@ -17,8 +17,8 @@ public class Axe {
     public int getDurabilityPoints() {
         return this.durabilityPoints;
     }
-
-    public void attack(Dummy target) {
+    @Override
+    public void attack(Target target) {
         if (this.durabilityPoints <= 0) {
             throw new IllegalStateException("Axe is broken.");
         }
