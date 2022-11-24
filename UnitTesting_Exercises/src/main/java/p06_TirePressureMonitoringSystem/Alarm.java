@@ -1,8 +1,8 @@
 package p06_TirePressureMonitoringSystem;
 
 public class Alarm {
-    private static final double LOW_PRESSURE_THRESHOLD = 17;
-    private static final double HIGH_PRESSURE_THRESHOLD = 21;
+    public static final double LOW_PRESSURE_THRESHOLD = 17;
+    public static final double HIGH_PRESSURE_THRESHOLD = 21;
 
     private Sensor sensor;
 
