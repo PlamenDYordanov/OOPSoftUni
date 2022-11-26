@@ -1,66 +1,104 @@
 import jdk.jshell.spi.ExecutionControl;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Instock implements ProductStock {
+    private List<Product> productList;
+
+    public Instock() {
+        this.productList = new ArrayList<>();
+    }
 
     @Override
     public int getCount() {
-        throw new UnsupportedOperationException();
+        return productList.size();
     }
 
     @Override
     public boolean contains(Product product) {
-        throw new UnsupportedOperationException();
+        return productList.contains(product);
     }
 
     @Override
     public void add(Product product) {
-        throw new UnsupportedOperationException();
+        this.productList.add(product);
     }
 
     @Override
     public void changeQuantity(String product, int quantity) {
-        throw new UnsupportedOperationException();
+        Product productFound = productList.stream()
+                .filter(p -> p.getLabel().equals(product))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+        productFound.setQuantity(quantity);
+
+
     }
 
     @Override
     public Product find(int index) {
-        throw new UnsupportedOperationException();
+        return productList.get(index);
     }
 
     @Override
     public Product findByLabel(String label) {
-        throw new UnsupportedOperationException();
+        return productList.stream()
+                .filter(p -> p.getLabel().equals(label))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
     public Iterable<Product> findFirstByAlphabeticalOrder(int count) {
-        throw new UnsupportedOperationException();
+        if (count < 0 || count > productList.size()) {
+            return new ArrayList<>();
+        }
+        return productList
+                .stream()
+                .limit(count)
+                .sorted(Comparator.comparing(Product::getLabel))
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<Product> findAllInRange(double lo, double hi) {
-        throw new UnsupportedOperationException();
+        return productList.stream()
+                .filter(p -> p.getPrice() > lo && p.getPrice() <= hi)
+                .sorted((left, right) -> Double.compare(right.getPrice(), left.getPrice()))
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<Product> findAllByPrice(double price) {
-        throw new UnsupportedOperationException();
+        return productList.stream()
+                .filter(p -> p.getPrice() == price)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<Product> findFirstMostExpensiveProducts(int count) {
-        throw new UnsupportedOperationException();
+        if (count >= 0 && count <= productList.size()) {
+            return productList.stream()
+                    .sorted((left, right) -> Double.compare(right.getPrice(), left.getPrice()))
+                    .collect(Collectors.toList());
+        }
+        throw new IllegalArgumentException();
     }
 
     @Override
     public Iterable<Product> findAllByQuantity(int quantity) {
-        throw new UnsupportedOperationException();
+        return this.productList
+                .stream()
+                .filter(product ->  product.getQuantity() == quantity)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterator<Product> iterator() {
-        throw new UnsupportedOperationException();
+        return this.productList.iterator();
     }
 }
