@@ -1,3 +1,5 @@
+package Instock;
+
 public class Product implements Comparable<Product> {
 
     public String label;

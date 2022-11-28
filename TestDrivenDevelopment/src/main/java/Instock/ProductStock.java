@@ -1,3 +1,5 @@
+package Instock;
+
 public interface ProductStock extends Iterable<Product> {
     //getter
     int getCount();

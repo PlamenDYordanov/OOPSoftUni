@@ -1,3 +1,6 @@
+package Instock;
+
+import Instock.Instock;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -5,7 +8,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -36,7 +38,7 @@ public class InstockTest {
         Assert.assertFalse(instock.contains(testProduct));
         instock.add(testProduct);
         Assert.assertTrue(instock.contains(testProduct));
-        Assert.assertEquals("Pepper", testProduct.getLabel());
+        assertEquals("Pepper", testProduct.getLabel());
 
 
     }
@@ -93,7 +95,7 @@ public class InstockTest {
         for (Product product : returnedProduct) {
             sortedProducts.add(product);
         }
-        Assert.assertEquals(CORRECT_LABEL_AVOCADO, sortedProducts.get(0).getLabel());
+        assertEquals(CORRECT_LABEL_AVOCADO, sortedProducts.get(0).getLabel());
     }
 
     @Test
@@ -112,7 +114,7 @@ public class InstockTest {
             returnedProducts.add(product);
         }
 
-        Assert.assertEquals("Bread", returnedProducts.get(0).getLabel());
+        assertEquals("Bread", returnedProducts.get(0).getLabel());
     }
     @Test
     public void testFindAllInPriceRangeNoneMatch() {
@@ -124,7 +126,7 @@ public class InstockTest {
     public void testFindAllByPrice() {
         fillStock();
         Iterable<Product> returnedProducts = instock.findAllByPrice(2.50);
-        Assert.assertEquals("Bread", returnedProducts.iterator().next().getLabel());
+        assertEquals("Bread", returnedProducts.iterator().next().getLabel());
     }
     @Test
     public void testFindAllByPriceNoneMatch() {
@@ -141,7 +143,7 @@ public class InstockTest {
         for (Product product : iterable) {
             mostExpensiveProducts.add(product);
         }
-        Assert.assertEquals("Avocado", mostExpensiveProducts.get(0).getLabel());
+        assertEquals("Avocado", mostExpensiveProducts.get(0).getLabel());
     }
     @Test(expected = IllegalArgumentException.class)
     public void testFindMostExpensiveProductsOutOfRange() {
@@ -158,7 +160,7 @@ public class InstockTest {
             returnedProducts.add(product);
         }
         Assert.assertEquals(1, returnedProducts.size());
-        Assert.assertEquals(2 , returnedProducts.get(0).getQuantity());
+        assertEquals(2 , returnedProducts.get(0).getQuantity());
     }
     @Test
     public void testFindAllByQuantityNoneMatch() {
@@ -170,11 +172,11 @@ public class InstockTest {
     public void testGetIterableProducts() {
         fillStock();
         Iterator<Product> iterable = instock.iterator();
-        Assert.assertEquals("Bread", iterable.next().getLabel());
+        assertEquals("Bread", iterable.next().getLabel());
         Assert.assertTrue(iterable.hasNext());
         iterable.next();
         Assert.assertTrue(iterable.hasNext());
-        Assert.assertEquals("Avocado", iterable.next().getLabel());
+        assertEquals("Avocado", iterable.next().getLabel());
 
     }
 
