@@ -1,3 +1,5 @@
+package Singelton;
+
 public class SimpleSingleton {
     private static final  SimpleSingleton INSTANCE = new SimpleSingleton();
 

@@ -1,3 +1,5 @@
+package Singelton;
+
 public class LazyInnerHolderClassSingleton {
 
     private LazyInnerHolderClassSingleton() {
