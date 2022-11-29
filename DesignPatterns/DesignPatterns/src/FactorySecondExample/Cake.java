@@ -15,7 +15,6 @@ public class Cake implements CakeInterface {
 
     @Override
     public void prepare() {
-
     }
 
     @Override
