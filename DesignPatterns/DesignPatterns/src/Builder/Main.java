@@ -7,5 +7,6 @@ public class Main {
                 .withCity("Sofia")
                 .withCountry("Bulgaria")
                 .build();
+
     }
 }

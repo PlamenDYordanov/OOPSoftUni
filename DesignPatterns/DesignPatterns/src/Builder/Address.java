@@ -1,7 +1,7 @@
 package Builder;
 
 public class Address {
-    private String country;
+    public String country;
     private String city;
 
     public Address(String country, String city) {
