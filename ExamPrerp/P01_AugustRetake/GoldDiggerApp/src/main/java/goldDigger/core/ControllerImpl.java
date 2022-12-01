@@ -55,7 +55,7 @@ public class ControllerImpl implements Controller {
             spot.getExhibits().add(exhibit);
         }
         this.spotRepository.add(spot);
-        return String.format(SPOT_ADDED,spotName);
+        return String.format(ConstantMessages.SPOT_ADDED,spotName);
     }
 
     @Override
@@ -93,8 +93,8 @@ public class ControllerImpl implements Controller {
         output.append(String.format(ConstantMessages.FINAL_SPOT_INSPECT, this.spotCount));
         output.append(System.lineSeparator());
         output.append(String.format(ConstantMessages.FINAL_DISCOVERER_INFO));
-        output.append(System.lineSeparator());
         for (Discoverer discoverer : this.discovererRepository.getCollection()) {
+            output.append(System.lineSeparator());
             output.append(String.format(ConstantMessages.FINAL_DISCOVERER_NAME,discoverer.getName()));
             output.append(System.lineSeparator());
             output.append(String.format(ConstantMessages.FINAL_DISCOVERER_ENERGY,discoverer.getEnergy()));

@@ -10,7 +10,7 @@ public class SpotImpl implements Spot {
     private Collection<String> exhibits;
 
     public SpotImpl(String name) {
-        setName(name);
+        this.setName(name);
         this.exhibits = new ArrayList<>();
     }
 

@@ -7,20 +7,20 @@ import goldDigger.models.museum.Museum;
 import static goldDigger.common.ExceptionMessages.DISCOVERER_ENERGY_LESS_THAN_ZERO;
 import static goldDigger.common.ExceptionMessages.DISCOVERER_NAME_NULL_OR_EMPTY;
 
-public abstract class BaseDiscoverer implements Discoverer {
+public class BaseDiscoverer implements Discoverer {
     private String name;
     private double energy;
     private Museum museum;
     private static final int DEFAULT_ENERGY_INSPECT = 15;
 
     public BaseDiscoverer(String name, double energy) {
-        this.name = name;
-        this.energy = energy;
+        this.setName(name);
+        this.setEnergy(energy);
         this.museum = new BaseMuseum();
     }
 
 
-    public void setName(String name) {
+    private void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new NullPointerException(ExceptionMessages.DISCOVERER_NAME_NULL_OR_EMPTY);
         }
@@ -28,7 +28,7 @@ public abstract class BaseDiscoverer implements Discoverer {
 
     }
 
-    public void setEnergy(double energy) {
+    private void setEnergy(double energy) {
         if (energy < 0) {
             throw new IllegalArgumentException(ExceptionMessages.DISCOVERER_ENERGY_LESS_THAN_ZERO);
         }
