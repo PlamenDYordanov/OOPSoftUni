@@ -8,14 +8,4 @@ public abstract class BaseFood implements Food {
         this.calories = calories;
         this.price = price;
     }
-
-    @Override
-    public int getCalories() {
-        return this.calories;
-    }
-
-    @Override
-    public double getPrice() {
-        return this.price;
-    }
 }

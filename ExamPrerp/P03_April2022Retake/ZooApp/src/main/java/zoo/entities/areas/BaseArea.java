@@ -22,7 +22,7 @@ public abstract class BaseArea implements Area {
         this.animals = new ArrayList<>();
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new NullPointerException(ExceptionMessages.AREA_NAME_NULL_OR_EMPTY);
         }
@@ -46,17 +46,16 @@ public abstract class BaseArea implements Area {
 
     @Override
     public int sumCalories() {
-        return foods.stream().mapToInt(Food::getCalories).sum();
+        return this.foods.stream().mapToInt(Food::getCalories).sum();
     }
 
     @Override
     public void addAnimal(Animal animal) {
-        if (capacity <= animals.size()) {
+        if (capacity == animals.size()) {
             throw new IllegalArgumentException(ExceptionMessages.NOT_ENOUGH_CAPACITY);
         } else {
-            animals.add(animal);
+            this.animals.add(animal);
         }
-
     }
 
     @Override
@@ -66,7 +65,7 @@ public abstract class BaseArea implements Area {
 
     @Override
     public void addFood(Food food) {
-        foods.add(food);
+        this.foods.add(food);
     }
 
     @Override
@@ -84,7 +83,6 @@ public abstract class BaseArea implements Area {
         if (this.animals.isEmpty()) {
             output.append("none");
         } else {
-
             output.append(this.animals.stream().map(Animal::getName).collect(Collectors.joining(" ")));
         }
 

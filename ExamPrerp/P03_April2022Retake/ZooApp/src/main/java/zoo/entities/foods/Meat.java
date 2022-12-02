@@ -6,4 +6,13 @@ public class Meat extends BaseFood{
     public Meat() {
         super(DEFAULT_CALORIES, DEFAULT_PRICE);
     }
+
+    @Override
+    public int getCalories() {
+        return DEFAULT_CALORIES;
+    }
+    @Override
+    public double getPrice() {
+        return DEFAULT_PRICE;
+    }
 }

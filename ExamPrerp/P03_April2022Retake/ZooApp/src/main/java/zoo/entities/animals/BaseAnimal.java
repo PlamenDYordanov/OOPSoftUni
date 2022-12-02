@@ -29,7 +29,7 @@ public abstract class BaseAnimal implements Animal {
         this.kind = kind;
     }
 
-    private void setPrice(double price) {
+    public void setPrice(double price) {
         if (price <= 0) {
             throw new IllegalArgumentException(ExceptionMessages.ANIMAL_PRICE_BELOW_OR_EQUAL_ZERO);
         }
@@ -51,12 +51,8 @@ public abstract class BaseAnimal implements Animal {
         return this.price;
     }
 
-    @Override
-    public void eat() {
 
-    }
-
-    protected void setKg(double kg) {
+    public void setKg(double kg) {
         this.kg = kg;
     }
 

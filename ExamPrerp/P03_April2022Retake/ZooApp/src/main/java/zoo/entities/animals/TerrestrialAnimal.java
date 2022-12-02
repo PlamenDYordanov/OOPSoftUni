@@ -8,6 +8,6 @@ public class TerrestrialAnimal extends BaseAnimal{
 
     @Override
     public void eat() {
-        setKg(super.getKg() + 5.70);
+        setKg(getKg() + 5.70);
     }
 }
