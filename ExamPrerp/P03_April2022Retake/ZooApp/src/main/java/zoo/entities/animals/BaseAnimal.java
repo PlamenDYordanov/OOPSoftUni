@@ -56,7 +56,7 @@ public abstract class BaseAnimal implements Animal {
 
     }
 
-    public void setKg(double kg) {
+    protected void setKg(double kg) {
         this.kg = kg;
     }
 

@@ -16,10 +16,17 @@ public abstract class BaseArea implements Area {
     private Collection<Animal> animals;
 
     public BaseArea(String name, int capacity) {
-        this.name = name;
+        this.setName(name);
         this.capacity = capacity;
         this.foods = new ArrayList<>();
         this.animals = new ArrayList<>();
+    }
+
+    private void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new NullPointerException(ExceptionMessages.AREA_NAME_NULL_OR_EMPTY);
+        }
+        this.name = name;
     }
 
     @Override
@@ -44,9 +51,9 @@ public abstract class BaseArea implements Area {
 
     @Override
     public void addAnimal(Animal animal) {
-        if (capacity < animals.size()) {
+        if (capacity <= animals.size()) {
             throw new IllegalArgumentException(ExceptionMessages.NOT_ENOUGH_CAPACITY);
-        }else {
+        } else {
             animals.add(animal);
         }
 
@@ -64,21 +71,31 @@ public abstract class BaseArea implements Area {
 
     @Override
     public void feed() {
-    animals.forEach(Animal::eat);
+        animals.forEach(Animal::eat);
     }
 
     @Override
     public String getInfo() {
-        StringBuilder output = new StringBuilder();
-        output.append(String.format("%s (%s):" + "\n",this.name, this.getClass().getSimpleName()));
-        output.append("Animals: ");
+        StringBuilder output = new StringBuilder()
+                .append(String.format("%s (%s):", this.name, this.getClass().getSimpleName()))
+                .append(System.lineSeparator())
+                .append("Animal: ");
+
         if (this.animals.isEmpty()) {
             output.append("none");
-        }else {
-            output.append(animals.stream().map(Animal::getName).collect(Collectors.joining(" ")));
+        } else {
+
+            output.append(this.animals.stream().map(Animal::getName).collect(Collectors.joining(" ")));
         }
-        output.append("\n").append(String.format("Foods: %d", foods.size()));
-        output.append("\n").append(String.format("Calories: %d",foods.stream().mapToInt(Food::getCalories).sum()));
-        return null;
+
+        output
+                .append(System.lineSeparator())
+                .append("Foods: ")
+                .append(this.foods.size())
+                .append(System.lineSeparator())
+                .append("Calories: ")
+                .append(this.sumCalories());
+
+        return output.toString().trim();
     }
 }
