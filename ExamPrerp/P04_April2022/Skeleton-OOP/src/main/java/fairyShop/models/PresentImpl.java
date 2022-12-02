@@ -8,18 +8,18 @@ public class PresentImpl implements Present{
     private static final int DEFAULT_DECREASE_ENERGY_REQUIRE = 10;
 
     public PresentImpl(String name, int energyRequire) {
-        this.name = name;
-        this.energyRequire = energyRequire;
+        setName(name);
+        setEnergyRequire(energyRequire);
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         if (name == null || name.trim().isEmpty()){
             throw new NullPointerException(ExceptionMessages.PRESENT_NAME_NULL_OR_EMPTY);
         }
         this.name = name;
     }
 
-    public void setEnergyRequire(int energyRequire) {
+    private void setEnergyRequire(int energyRequire) {
         if (energyRequire < 0) {
             throw new IllegalArgumentException(ExceptionMessages.PRESENT_ENERGY_LESS_THAN_ZERO);
         }
