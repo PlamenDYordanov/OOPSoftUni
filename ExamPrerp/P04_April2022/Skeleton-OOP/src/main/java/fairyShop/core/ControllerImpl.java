@@ -12,78 +12,111 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ControllerImpl implements Controller {
-    private HelperRepository<Helper> helperRepository;
-    private PresentRepository<Present> presentRepository;
-    private Shop shop;
-
+    HelperRepository helperRepository;
+    PresentRepository presentRepository;
     public ControllerImpl() {
         helperRepository = new HelperRepository();
         presentRepository = new PresentRepository();
-        shop = new ShopImpl();
     }
 
     @Override
     public String addHelper(String type, String helperName) {
         Helper helper;
-        if (type.equals("Sleepy")) {
-            helper = new Sleepy(helperName);
-        } else if (type.equals("Happy")) {
-            helper = new Happy(helperName);
-        } else {
-            throw new IllegalArgumentException(ExceptionMessages.HELPER_TYPE_DOESNT_EXIST);
+        switch (type){
+            case "Happy":
+                helper = new Happy(helperName);
+                helperRepository.add(helper);
+                break;
+            case "Sleepy":
+                helper = new Sleepy(helperName);
+                helperRepository.add(helper);
+                break;
+            default:
+                throw new IllegalArgumentException(ExceptionMessages.HELPER_TYPE_DOESNT_EXIST);
         }
-        helperRepository.add(helper);
         return String.format(ConstantMessages.ADDED_HELPER, type, helperName);
     }
 
     @Override
     public String addInstrumentToHelper(String helperName, int power) {
-        if (helperRepository.findByName(helperName) == null) {
-            throw new IllegalArgumentException(ExceptionMessages.HELPER_DOESNT_EXIST);
-        }
-        Instrument instrument = new InstrumentImpl(power);
-        helperRepository.findByName(helperName).addInstrument(instrument);
+       if (helperRepository.findByName(helperName) == null) {
+           throw new IllegalArgumentException(ExceptionMessages.HELPER_DOESNT_EXIST);
+       }
+       Instrument currentInstrument = new InstrumentImpl(power);
+        Helper currentHelper = helperRepository.findByName(helperName);
+        currentHelper.addInstrument(currentInstrument);
         return String.format(ConstantMessages.SUCCESSFULLY_ADDED_INSTRUMENT_TO_HELPER, power, helperName);
     }
 
     @Override
     public String addPresent(String presentName, int energyRequired) {
-        Present present = new PresentImpl(presentName, energyRequired);
-        presentRepository.add(present);
+        Present currentPresent = new PresentImpl(presentName, energyRequired);
+        presentRepository.add(currentPresent);
         return String.format(ConstantMessages.SUCCESSFULLY_ADDED_PRESENT, presentName);
     }
 
     @Override
     public String craftPresent(String presentName) {
-        List<Helper> collect = helperRepository.getModels().stream().filter(helper -> helper.getEnergy() > 50)
+        Shop shop = new ShopImpl();
+        Present requirePresent = presentRepository.findByName(presentName);
+        List<Helper> helpersAbove50Energy = helperRepository.getModels().stream()
+                .filter(helper -> helper.getEnergy() > 50)
                 .collect(Collectors.toList());
-        if (collect.isEmpty()) {
+        if (helpersAbove50Energy.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessages.NO_HELPER_READY);
         }
-        int brokenInstruments = 0;
-        Present present = presentRepository.findByName(presentName);
-        for (Helper helper : collect) {
-            shop.craft(present, helper);
-            brokenInstruments += (int) helper.getInstruments().stream().filter(Instrument::isBroken).count();
-            if (present.isDone()){
+        for (Helper helper : helpersAbove50Energy) {
+            shop.craft(requirePresent, helper);
+            if (requirePresent.isDone()){   //!!!!!!!!!!!
                 break;
             }
         }
-        if (present.isDone()) {
-            return String.format(ConstantMessages.PRESENT_DONE, presentName, "done") +
-                    String.format(ConstantMessages.COUNT_BROKEN_INSTRUMENTS, brokenInstruments);
+        int countOfBrokenInstruments = 0;
+        for (Helper helpers : helpersAbove50Energy) {
+            for (Instrument instrument : helpers.getInstruments()) {
+               if (instrument.isBroken()) {
+                   countOfBrokenInstruments++;
+               }
+            }
         }
-        return String.format(ConstantMessages.PRESENT_DONE, presentName, "not done") +
-                String.format(ConstantMessages.COUNT_BROKEN_INSTRUMENTS, brokenInstruments);
+        StringBuilder output = new StringBuilder();
+        if (requirePresent.isDone()) {
+            output.append(String.format(ConstantMessages.PRESENT_DONE, requirePresent.getName(), "done"));
+        }else {
+            output.append(String.format(ConstantMessages.PRESENT_DONE, requirePresent.getName(), "not done"));
+        }
+        output.append(String.format(ConstantMessages.COUNT_BROKEN_INSTRUMENTS, countOfBrokenInstruments));
+
+        return output.toString();
     }
 
     @Override
     public String report() {
-        int size = (int) presentRepository.getModels().stream().filter(Present::isDone).count();
-        List<String> collect = helperRepository.getModels().stream().map(helper -> String.format("Name: %s%n" +
-                        "Energy: %d%n" +
-                        "Instruments: %d not broken left%n", helper.getName(), helper.getEnergy(),
-                (int) helper.getInstruments().stream().filter(instrument -> !instrument.isBroken()).count())).collect(Collectors.toList());
-        return String.format("%d presents are done!%n", size) + String.format("Helpers info:%n") + String.join("", collect).trim();
+        int totalCraftedPresent = 0;
+        for (Present model : presentRepository.getModels()) {
+           if (model.isDone()){
+                totalCraftedPresent++;
+            }
+        }
+        StringBuilder output = new StringBuilder();
+        output.append(String.format("%d presents are done!",totalCraftedPresent));
+        output.append(System.lineSeparator());
+        output.append("Helpers info:");
+        output.append(System.lineSeparator());
+        for (Helper model : helperRepository.getModels()) {
+            output.append(String.format("Name: %s", model.getName()));
+            output.append(System.lineSeparator());
+            output.append(String.format("Energy: %d", model.getEnergy()));
+            output.append(System.lineSeparator());
+            int countOfDurableInstruments = 0;
+            for (Instrument instrument : model.getInstruments()) {
+                if (!instrument.isBroken()) {
+                    countOfDurableInstruments++;
+                }
+            }
+            output.append(String.format("Instruments: %d not broken left",countOfDurableInstruments));
+            output.append(System.lineSeparator());
+        }
+        return output.toString().trim();
     }
 }

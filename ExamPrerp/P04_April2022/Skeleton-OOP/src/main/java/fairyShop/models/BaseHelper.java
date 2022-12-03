@@ -14,11 +14,11 @@ public abstract class BaseHelper implements Helper {
 
     public BaseHelper(String name, int energy) {
         this.setName(name);
-        this.setEnergy(energy);
+        this.energy = energy;
         this. instruments = new ArrayList<>();
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         if (name == null || name.trim().isEmpty()){
             throw new NullPointerException(ExceptionMessages.HELPER_NAME_NULL_OR_EMPTY);
         }

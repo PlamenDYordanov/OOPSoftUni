@@ -4,7 +4,7 @@ import fairyShop.models.Helper;
 
 import java.util.*;
 
-public class HelperRepository<T> implements Repository<Helper> {
+public class HelperRepository implements Repository<Helper> {
     private Map<String , Helper> helpers;
 
     public HelperRepository() {

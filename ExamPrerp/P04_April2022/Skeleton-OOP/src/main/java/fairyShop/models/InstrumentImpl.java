@@ -10,7 +10,7 @@ public class InstrumentImpl implements Instrument{
         this.setPower(power);
     }
 
-    private void setPower(int power) {
+    public void setPower(int power) {
         if (power < 0) {
             throw new IllegalArgumentException(ExceptionMessages.INSTRUMENT_POWER_LESS_THAN_ZERO);
         }
