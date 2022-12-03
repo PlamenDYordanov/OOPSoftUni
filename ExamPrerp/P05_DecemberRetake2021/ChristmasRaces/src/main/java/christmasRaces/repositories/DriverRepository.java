@@ -16,8 +16,7 @@ public class DriverRepository implements Repository<Driver> {
 
     @Override
     public Driver getByName(String name) {
-        Driver driver = drivers.stream().filter(driver1 -> driver1.getName().equals(name)).findFirst().orElse(null);
-        return driver;
+        return drivers.stream().filter(driver1 -> driver1.getName().equals(name)).findFirst().orElse(null);
     }
 
     @Override

@@ -8,10 +8,11 @@ public class MuscleCar extends BaseCar {
     private static final int MAXIMUM_HP = 600;
     public MuscleCar(String model, int horsePower) {
         super(model, horsePower, DEFAULT_CUBIC_CENTIMETERS);
+        checkHorsePower(horsePower);
     }
 
     @Override
-    protected void setHorsePower(int horsePower) {
+    void checkHorsePower(int horsePower) {
         if (horsePower < MINIMUM_HP || horsePower > MAXIMUM_HP) {
             throw new IllegalArgumentException(String.format(ExceptionMessages.INVALID_HORSE_POWER, getHorsePower()));
         }
