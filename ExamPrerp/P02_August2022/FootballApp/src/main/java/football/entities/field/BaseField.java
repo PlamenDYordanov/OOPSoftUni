@@ -66,11 +66,10 @@ public abstract class BaseField implements Field {
         output.append("Player: ");
         if (players.isEmpty()){
             output.append("none");
-            output.append(System.lineSeparator());
         }else {
             output.append(this.players.stream().map(Player::getName).collect(Collectors.joining(" ")));
-            output.append(System.lineSeparator());
         }
+        output.append(System.lineSeparator());
         output.append(String.format("Supplement: %d", supplements.size()));
         output.append(System.lineSeparator());
         output.append(String.format("Energy: %d", sumEnergy()));
