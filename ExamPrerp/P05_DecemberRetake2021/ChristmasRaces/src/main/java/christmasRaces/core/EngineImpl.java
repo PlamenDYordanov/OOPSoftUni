@@ -75,7 +75,7 @@ public class EngineImpl implements Engine {
     }
 
     private String createRace(String[] data) {
-        // TODO
+    controller.createRace(data[0], Integer.parseInt(data[1]));
         return null;
     }
 
