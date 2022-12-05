@@ -19,8 +19,8 @@ public class PlanetRepository implements Repository<Planet>{
     }
 
     @Override
-    public void add(Planet model) {
-        planets.putIfAbsent(model.getName(), model);
+    public void add(Planet name) {
+        planets.putIfAbsent(name.getName(), name);
     }
 
     @Override

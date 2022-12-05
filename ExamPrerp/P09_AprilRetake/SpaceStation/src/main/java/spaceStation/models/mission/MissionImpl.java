@@ -11,12 +11,14 @@ public class MissionImpl implements Mission{
     public void explore(Planet planet, Collection<Astronaut> astronauts) {
         Iterator<String> items = planet.getItems().iterator();
         for (Astronaut astronaut : astronauts) {
-            while (astronaut.canBreath() && items.hasNext())
+            while (items.hasNext()){
             if (astronaut.canBreath()) {
                 astronaut.breath();
                 astronaut.getBag().getItems().add(items.next());
                 items.remove();
-                }
+                }else{
+                break;
             }
+            }}
         }
     }

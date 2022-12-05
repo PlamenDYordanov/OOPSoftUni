@@ -8,6 +8,6 @@ public class Biologist extends  BaseAstronaut{
 
     @Override
     public void breath() {
-        setOxygen(Math.max(0, getOxygen() - 10));
+        setOxygen(Math.max(0, getOxygen() - 5));
     }
 }

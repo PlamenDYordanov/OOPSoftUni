@@ -11,7 +11,7 @@ public class PlanetImpl implements Planet{
 
     public PlanetImpl(String name) {
         this.setName(name);
-        items = new ArrayList<>();
+        this.items = new ArrayList<>();
     }
     private void setName(String name){
         if (name == null || name.trim().isEmpty()) {
