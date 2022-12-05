@@ -15,7 +15,7 @@ public abstract class BaseTable implements Table {
     private Collection<Beverages> beverages;
     private int number;
     private int size;
-    private int numberOFPeople;
+    private int numberOfPeople;
     private double pricePerPerson;
     private boolean isReservedTable;
     private double allPeople;
@@ -41,6 +41,10 @@ public abstract class BaseTable implements Table {
         return this.number;
     }
 
+    public void setReservedTable(boolean reservedTable) {
+        isReservedTable = reservedTable;
+    }
+
     @Override
     public int getSize() {
         return this.size;
@@ -48,7 +52,7 @@ public abstract class BaseTable implements Table {
 
     @Override
     public int numberOfPeople() {
-        return this.numberOFPeople;
+        return this.numberOfPeople;
     }
 
     @Override
@@ -63,7 +67,7 @@ public abstract class BaseTable implements Table {
 
     @Override
     public double allPeople() {
-        return this.numberOFPeople * pricePerPerson;
+        return getNumberOFPeople() * pricePerPerson;
     }
 
     @Override
@@ -71,44 +75,60 @@ public abstract class BaseTable implements Table {
         if (numberOfPeople <= 0) {
             throw new IllegalArgumentException(ExceptionMessages.INVALID_NUMBER_OF_PEOPLE);
         }
-    this.isReservedTable = true;//!!!
-    this.numberOFPeople += numberOfPeople;
+        setNumberOFPeople(numberOfPeople);
+        this.isReservedTable = true;
+    }
+
+    public void setNumberOFPeople(int numberOFPeople) {
+        this.numberOfPeople += numberOFPeople;
+    }
+
+    public int getNumberOFPeople() {
+        return numberOfPeople;
     }
 
     @Override
     public void orderHealthy(HealthyFood food) {
-       this.healthyFood.add(food);
+        this.healthyFood.add(food);
     }
 
     @Override
     public void orderBeverages(Beverages beverages) {
-       this.beverages.add(beverages);
+        this.beverages.add(beverages);
     }
 
     @Override
     public double bill() {
-        double priceBeverages = beverages.stream().mapToDouble(Beverages::getPrice).sum();
-        double priceFood = healthyFood.stream().mapToDouble(HealthyFood::getPrice).sum();
-        return (priceBeverages + priceFood) + allPeople;
+        double currentBill = 0;
+
+        for (HealthyFood food : healthyFood) {
+            currentBill += food.getPrice();
+        }
+
+        for (Beverages currentBeverage : beverages) {
+            currentBill += currentBeverage.getPrice();
+        }
+
+        return currentBill + allPeople();
     }
 
     @Override
     public void clear() {
         beverages.clear();
         healthyFood.clear();
+        this.numberOfPeople = 0;
+        this.allPeople = 0;
+        this.isReservedTable = false;
     }
 
     @Override
     public String tableInformation() {
-        StringBuilder output = new StringBuilder();
-        output.append(String.format("Table - %d",this.number));
-        output.append(System.lineSeparator());
-        output.append(String.format("Size - %d",this.size));
-        output.append(System.lineSeparator());
-        output.append(String.format("Type - %s", this.getClass().getSimpleName()));
-        output.append(System.lineSeparator());
-        output.append(String.format("All price - %.2f", this.pricePerPerson));
-        output.append(System.lineSeparator());
-        return output.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(String.format("Table - %d", getTableNumber())).append(System.lineSeparator());
+        stringBuilder.append(String.format("Size - %d", getSize())).append(System.lineSeparator());
+        stringBuilder.append(String.format("Type - %s", getClass().getSimpleName())).append(System.lineSeparator());
+        stringBuilder.append(String.format("All price - %.2f", pricePerPerson())).append(System.lineSeparator());
+
+        return stringBuilder.toString();
     }
 }
