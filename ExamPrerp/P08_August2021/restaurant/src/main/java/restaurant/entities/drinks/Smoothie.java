@@ -1,27 +1,11 @@
 package restaurant.entities.drinks;
 
 public class Smoothie extends BaseBeverage {
-    public Smoothie(String name, int counter, String brand, double price) {
-        super(name, counter, brand, price);
+    private static final double DEFAULT_PRICE = 4.50;
+    public Smoothie(String name, int counter, String brand) {
+        super(name, counter, DEFAULT_PRICE, brand);
     }
 
-    @Override
-    public String getName() {
-        return ;
-    }
 
-    @Override
-    public int getCounter() {
-        return 0;
-    }
 
-    @Override
-    public double getPrice() {
-        return 0;
-    }
-
-    @Override
-    public String getBrand() {
-        return null;
-    }
 }
