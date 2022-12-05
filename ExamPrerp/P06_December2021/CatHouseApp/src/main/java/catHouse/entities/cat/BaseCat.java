@@ -10,7 +10,14 @@ public abstract class BaseCat implements Cat{
 
     public BaseCat(String name, String breed, double price) {
         this.setName(name);
-        this.breed = breed;
+        this.setBreed(breed);
+        this.setPrice(price);
+    }
+
+    private void setPrice(double price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException(ExceptionMessages.CAT_PRICE_CANNOT_BE_BELOW_OR_EQUAL_TO_ZERO);
+        }
         this.price = price;
     }
 
@@ -39,9 +46,6 @@ public abstract class BaseCat implements Cat{
 
     @Override
     public double getPrice() {
-        if (price <= 0) {
-            throw new IllegalArgumentException(ExceptionMessages.CAT_PRICE_CANNOT_BE_BELOW_OR_EQUAL_TO_ZERO);
-        }
         return this.price;
     }
 
