@@ -1,5 +1,7 @@
 package aquarium;
 
+import aquarium.core.Controller;
+import aquarium.core.ControllerImpl;
 import aquarium.core.Engine;
 import aquarium.core.EngineImpl;
 

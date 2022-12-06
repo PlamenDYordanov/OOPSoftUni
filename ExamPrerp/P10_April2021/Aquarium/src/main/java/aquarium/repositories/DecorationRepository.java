@@ -24,6 +24,9 @@ public class DecorationRepository implements Repository {
 
     @Override
     public Decoration findByType(String type) {
-        return decorations.stream().filter(decoration -> decoration.getClass().getSimpleName().equals(type)).findFirst().orElse(null);
+        return decorations.stream()
+                .filter(decoration -> decoration.getClass().getSimpleName().equals(type))
+                .findFirst()
+                .orElse(null);
     }
 }
