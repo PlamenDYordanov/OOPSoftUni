@@ -41,7 +41,7 @@ public class ControllerImpl implements Controller {
             default:
                 throw new NullPointerException(INVALID_AQUARIUM_TYPE);
         }
-        aquariums.putIfAbsent(aquariumName, aquarium);
+        aquariums.put(aquariumName, aquarium);
         return String.format(SUCCESSFULLY_ADDED_AQUARIUM_TYPE, aquariumType);
     }
 
@@ -92,12 +92,15 @@ public class ControllerImpl implements Controller {
         StringBuilder output = new StringBuilder();
         if (fish.getClass().getSimpleName().equals("FreshwaterFish") && typeOfAquarium.equals("FreshwaterAquarium")) {
             output.append(String.format(SUCCESSFULLY_ADDED_FISH_IN_AQUARIUM, fishType, aquariumName));
+            aquarium.addFish(fish);
         } else if (fish.getClass().getSimpleName().equals("SaltwaterFish") && typeOfAquarium.equals("SaltwaterAquarium")) {
             output.append(String.format(SUCCESSFULLY_ADDED_FISH_IN_AQUARIUM, fishType, aquariumName));
+            aquarium.addFish(fish);
         } else {
             return WATER_NOT_SUITABLE;
         }
-        aquarium.addFish(fish);
+
+
         return output.toString();
     }
 
@@ -111,20 +114,21 @@ public class ControllerImpl implements Controller {
     @Override
     public String calculateValue(String aquariumName) {
         double totalSum = 0;
-        for (Map.Entry<String, Aquarium> entry : aquariums.entrySet()) {
-            for (Fish fish : entry.getValue().getFish()) {
-              totalSum +=  fish.getPrice();
-            }
-            double sumOfDecoration = entry.getValue().getDecorations()
-                    .stream().mapToDouble(Decoration::getPrice).sum();
-            totalSum += sumOfDecoration;
-        }
+        Aquarium currentAquarium = aquariums.get(aquariumName);
+        double sumDecoration = currentAquarium.getDecorations().stream().mapToDouble(Decoration::getPrice).sum();
+        double sumFish = currentAquarium.getFish().stream().mapToDouble(Fish::getPrice).sum();
+        totalSum = sumDecoration + sumFish;
 
-        return String.format(VALUE_AQUARIUM,aquariumName, totalSum);
+        return String.format(VALUE_AQUARIUM, aquariumName, totalSum);
     }
 
     @Override
     public String report() {
-        return null;
+        StringBuilder output = new StringBuilder();
+        for (Map.Entry<String, Aquarium> entry : aquariums.entrySet()) {
+            output.append(entry.getValue().getInfo()).append(System.lineSeparator());
+        }
+
+        return output.toString().trim();
     }
 }
