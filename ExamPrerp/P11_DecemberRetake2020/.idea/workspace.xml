@@ -1,7 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="335ed6df-45f0-4112-9d78-40dd4fd24fe3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/BaseGun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Pistol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Rifle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/neighbourhood/GangNeighbourhood.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/BasePlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/CivilPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/MainPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/repositories/GunRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2IXZcI1c5zarLQhswecJFVwWfD9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/OOP_SoftUni/ExamPrerp/P11_DecemberRetake2020"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="335ed6df-45f0-4112-9d78-40dd4fd24fe3" name="Changes" comment="" />
+      <created>1670329965244</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670329965244</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
