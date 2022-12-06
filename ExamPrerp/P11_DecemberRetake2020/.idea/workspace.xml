@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335ed6df-45f0-4112-9d78-40dd4fd24fe3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/BaseGun.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Pistol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Rifle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/neighbourhood/GangNeighbourhood.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/BasePlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/CivilPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/MainPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/repositories/GunRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/core/ControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/core/EngineImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/core/EngineImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/BaseGun.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/BaseGun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Pistol.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Pistol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Rifle.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/guns/Rifle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/neighbourhood/GangNeighbourhood.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/neighbourhood/GangNeighbourhood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/BasePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/players/BasePlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +42,33 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/OOP_SoftUni/ExamPrerp/P11_DecemberRetake2020"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/OOP_SoftUni/ExamPrerp/P11_DecemberRetake2020&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="viceCity.Main" />
+      <module name="P11_DecemberRetake2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="viceCity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -71,5 +90,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ViceCity/src/main/java/viceCity/models/neighbourhood/GangNeighbourhood.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

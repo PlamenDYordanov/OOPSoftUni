@@ -1,10 +1,10 @@
 package viceCity.models.players;
 
 import viceCity.models.guns.Gun;
+import viceCity.repositories.GunRepository;
 import viceCity.repositories.interfaces.Repository;
 
-import static viceCity.common.ExceptionMessages.NAME_NULL;
-import static viceCity.common.ExceptionMessages.PLAYER_LIFE_POINTS_LESS_THAN_ZERO;
+import static viceCity.common.ExceptionMessages.*;
 
 public abstract class BasePlayer implements Player {
     private String name;
@@ -14,11 +14,12 @@ public abstract class BasePlayer implements Player {
     public BasePlayer(String name, int lifePoints) {
         this.setName(name);
         this.setLifePoints(lifePoints);
+        gunRepository = new GunRepository();
     }
 
     private void setName(String name) {
         if (name == null || name.trim().isEmpty()){
-            throw new IllegalArgumentException(NAME_NULL);
+            throw new NullPointerException(PLAYER_NULL_USERNAME);
         }
         this.name = name;
     }

@@ -37,8 +37,9 @@ public abstract class BaseGun implements Gun {
 
     @Override
     public boolean canFire() {
-        return getTotalBullets() > 0;
+        return getTotalBullets() > 0 || getBulletsPerBarrel() > 0;
     }
+
 
     @Override
     public String getName() {
