@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="019876ad-b5c1-44c6-8746-99c5c4dbf4d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/EasterRaces.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/common/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/common/ExceptionMessages.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/common/OutputMessages.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/core/ControllerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/core/EngineImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/core/interfaces/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/core/interfaces/Engine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/cars/BaseCar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/cars/Car.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/cars/MuscleCar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/cars/SportsCar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/drivers/Driver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/drivers/DriverImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/racers/Race.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/entities/racers/RaceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/io/ConsoleReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/io/ConsoleWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/io/interfaces/InputReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/io/interfaces/OutputWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/repositories/CarRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/repositories/DriverRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/repositories/RaceRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasterRaces/src/easterRaces/repositories/interfaces/Repository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/P012_AugustRetake2020.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/common/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/common/ExceptionMessages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/common/OutputMessages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/core/ControllerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/core/EngineImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/core/EngineImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/core/interfaces/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/core/interfaces/Engine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/cars/BaseCar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/cars/Car.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/cars/MuscleCar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/cars/SportsCar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/drivers/Driver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/drivers/DriverImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/racers/Race.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/entities/racers/RaceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/io/ConsoleReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/io/ConsoleWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/io/interfaces/InputReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/io/interfaces/OutputWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/repositories/CarRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/repositories/DriverRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/repositories/RaceRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/P012_AugustRetake2020/easterRaces/repositories/interfaces/Repository.class" beforeDir="false" />
-    </list>
+    <list default="true" id="019876ad-b5c1-44c6-8746-99c5c4dbf4d4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,14 +32,14 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/OOP_SoftUni/ExamPrerp/P012_AugustRetake2020&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/OOP_SoftUni/ExamPrerp/P13_August2020/OnlineShop",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="easterRaces.Main" />
