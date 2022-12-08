@@ -15,7 +15,7 @@ public abstract class BaseCar implements Car {
 
     private void setModel(String model) {
         if (model == null || model.trim().length() < 4) {
-            throw new IllegalArgumentException(String.format(INVALID_MODEL, model));
+            throw new IllegalArgumentException(String.format(INVALID_MODEL, model,4));
         }
         this.model = model;
     }
