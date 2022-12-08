@@ -6,8 +6,8 @@ public class MuscleCar extends BaseCar{
     private static final  double DEFAULT_CUBIC_CENTIMETERS  = 5000;
     private static  final  double DEFAULT_MIN_HORSEPOWER = 400;
     private static  final  double DEFAULT_MAX_HORSEPOWER = 600;
-    public MuscleCar(String model, int horsePower, double cubicCentimeters) {
-        super(model, horsePower, cubicCentimeters);
+    public MuscleCar(String model, int horsePower) {
+        super(model, horsePower, DEFAULT_CUBIC_CENTIMETERS);
         checkHorsePower(horsePower);
     }
 

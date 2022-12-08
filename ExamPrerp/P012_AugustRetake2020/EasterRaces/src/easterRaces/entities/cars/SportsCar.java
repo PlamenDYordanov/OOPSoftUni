@@ -7,8 +7,9 @@ public class SportsCar extends BaseCar{
     private static final  double DEFAULT_CUBIC_CENTIMETERS  = 3000;
     private static  final  double DEFAULT_MIN_HORSEPOWER = 250;
     private static  final  double DEFAULT_MAX_HORSEPOWER = 450;
-    public SportsCar(String model, int horsePower, double cubicCentimeters) {
-        super(model, horsePower, cubicCentimeters);
+    public SportsCar(String model, int horsePower) {
+        super(model, horsePower, DEFAULT_CUBIC_CENTIMETERS);
+        checkHorsePower(horsePower);
     }
 
     @Override
