@@ -9,7 +9,6 @@ public abstract class BaseComponent extends BaseProduct  implements  Component{
         this.generation = generation;
     }
 
-    protected abstract void multiplyOverallPerformance(double performance);
 
 
     @Override
@@ -19,7 +18,10 @@ public abstract class BaseComponent extends BaseProduct  implements  Component{
 
     @Override
     public String toString() {
-        String output = String.format(" Generation: %d", this.generation);
-        return super.toString() + output;
+
+        return String.format("Overall Performance: %.2f. Price: %.2f - " +
+                        "%s: %s %s (Id: %d) Generation: %d",
+                getOverallPerformance(), getPrice(), this.getClass().getSimpleName(),
+                getManufacturer(), getModel(), getId(), this.generation);
     }
 }

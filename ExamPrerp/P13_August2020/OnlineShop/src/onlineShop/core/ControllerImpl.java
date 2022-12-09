@@ -1,5 +1,7 @@
 package onlineShop.core;
 
+import onlineShop.common.constants.ExceptionMessages;
+import onlineShop.common.constants.OutputMessages;
 import onlineShop.core.interfaces.Controller;
 import onlineShop.models.products.components.*;
 import onlineShop.models.products.computers.BaseComputer;
@@ -8,149 +10,198 @@ import onlineShop.models.products.computers.DesktopComputer;
 import onlineShop.models.products.computers.Laptop;
 import onlineShop.models.products.peripherals.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static onlineShop.common.constants.ExceptionMessages.*;
 import static onlineShop.common.constants.OutputMessages.*;
 
 public class ControllerImpl implements Controller {
-    Collection<Computer> computers;
-    Collection<Peripheral> peripherals;
-    Collection<Component> components;
+    private Map<Integer, Computer> computers;
+    private Map<Integer, Component> components;
+    private Map<Integer, Peripheral> peripherals;
 
     public ControllerImpl() {
-        components = new ArrayList<>();
-        peripherals = new ArrayList<>();
-        components = new ArrayList<>();
+        this.computers = new HashMap<>();
+        this.components = new HashMap<>();
+        this.peripherals = new HashMap<>();
     }
 
     @Override
-    public String addComputer(String computerType, int id, String manufacturer, String model, double price) {
+    public String addComputer(String computerType, int id, String manufacturer,
+                              String model, double price) {
 
-        BaseComputer baseComputer = null;
-        switch (computerType) {
-            case "DesktopComputer":
-                baseComputer = new DesktopComputer(id, manufacturer, model, price);
+        if (computers.containsKey(id)) {
+            throw new IllegalArgumentException(ExceptionMessages.EXISTING_COMPUTER_ID);
+        }
+
+        Computer computer;
+
+        if (computerType.equals("DesktopComputer")) {
+            computer = new DesktopComputer(id, manufacturer, model, price);
+        } else if (computerType.equals("Laptop")) {
+            computer = new Laptop(id, manufacturer, model, price);
+        } else {
+            throw new IllegalArgumentException(ExceptionMessages.INVALID_COMPUTER_TYPE);
+        }
+
+        computers.put(computer.getId(), computer);
+
+        return String.format(OutputMessages.ADDED_COMPUTER, id);
+    }
+
+    @Override
+    public String addComponent(int computerId, int id, String componentType,
+                               String manufacturer, String model, double price,
+                               double overallPerformance, int generation) {
+
+        checkComputerId(computerId);
+
+        if (components.containsKey(id)) {
+            throw new IllegalArgumentException(ExceptionMessages.EXISTING_COMPONENT_ID);
+        }
+
+        Component component;
+
+        switch (componentType) {
+            case "CentralProcessingUnit":
+                component = new CentralProcessingUnit(id,
+                        manufacturer, model, price, overallPerformance, generation);
                 break;
-            case "Laptop":
-                baseComputer = new Laptop(id, manufacturer, model, price);
+            case "Motherboard":
+                component = new Motherboard(id,
+                        manufacturer, model, price, overallPerformance, generation);
+                break;
+            case "PowerSupply":
+                component = new PowerSupply(id,
+                        manufacturer, model, price, overallPerformance, generation);
+                break;
+            case "RandomAccessMemory":
+                component = new RandomAccessMemory(id,
+                        manufacturer, model, price, overallPerformance, generation);
+                break;
+            case "SolidStateDrive":
+                component = new SolidStateDrive(id,
+                        manufacturer, model, price, overallPerformance, generation);
+                break;
+            case "VideoCard":
+                component = new VideoCard(id,
+                        manufacturer, model, price, overallPerformance, generation);
                 break;
             default:
-                throw new IllegalArgumentException(INVALID_COMPUTER_TYPE);
+                throw new IllegalArgumentException(ExceptionMessages.INVALID_COMPONENT_TYPE);
         }
-        for (Computer computer : computers) {
-            if (computer.getId() == baseComputer.getId()) {
-                throw new IllegalArgumentException(EXISTING_COMPUTER_ID);
-            }
-        }
-        computers.add(baseComputer);
-        return String.format(ADDED_COMPUTER,baseComputer.getId());
+
+        components.put(component.getId(), component);
+
+        computers.get(computerId).addComponent(component);
+
+        return String.format(OutputMessages.ADDED_COMPONENT, componentType, id, computerId);
     }
 
+
     @Override
-    public String addPeripheral(int computerId, int id, String peripheralType, String manufacturer, String model, double price, double overallPerformance, String connectionType) {
+    public String addPeripheral(int computerId, int id, String peripheralType,
+                                String manufacturer, String model, double price,
+                                double overallPerformance, String connectionType) {
+
+        checkComputerId(computerId);
+
+        if (peripherals.containsKey(id)) {
+            throw new IllegalArgumentException(ExceptionMessages.EXISTING_PERIPHERAL_ID);
+        }
+
         Peripheral peripheral;
+
         switch (peripheralType) {
             case "Headset":
-                peripheral = new Headset(id,manufacturer,model,price,overallPerformance,connectionType);
+                peripheral = new Headset(id, manufacturer, model, price, overallPerformance, connectionType);
                 break;
             case "Keyboard":
-                peripheral = new Keyboard(id,manufacturer,model,price,overallPerformance,connectionType);
+                peripheral = new Keyboard(id, manufacturer, model, price, overallPerformance, connectionType);
                 break;
             case "Monitor":
-                peripheral = new Monitor(id,manufacturer,model,price,overallPerformance,connectionType);
+                peripheral = new Monitor(id, manufacturer, model, price, overallPerformance, connectionType);
                 break;
             case "Mouse":
-                peripheral = new Mouse(id,manufacturer,model,price,overallPerformance,connectionType);
+                peripheral = new Mouse(id, manufacturer, model, price, overallPerformance, connectionType);
                 break;
             default:
-                throw new IllegalArgumentException(INVALID_PERIPHERAL_TYPE);
+                throw new IllegalArgumentException(ExceptionMessages.INVALID_PERIPHERAL_TYPE);
         }
-        for (Peripheral currPeripheral : peripherals) {
-                if (currPeripheral.getId() == peripheral.getId()) {
-                    throw new IllegalArgumentException(EXISTING_PERIPHERAL_ID);
-                }
 
-          Computer currentComputer = computers.stream().filter(computer1 -> computer1.getId() == computerId).findFirst().orElse(null);
-            currentComputer.addPeripheral(peripheral);
-            this.peripherals.add(peripheral);
-        }
-        return String.format(ADDED_PERIPHERAL, peripheralType, id, computerId);
+        computers.get(computerId).addPeripheral(peripheral);
+
+        peripherals.put(peripheral.getId(), peripheral);
+
+        return String.format(OutputMessages.ADDED_PERIPHERAL, peripheralType, id, computerId);
     }
 
     @Override
     public String removePeripheral(String peripheralType, int computerId) {
-        Computer currentComputer = computers.stream().filter(computer1 -> computer1.getId() == computerId).findFirst().orElse(null);
-        currentComputer.removePeripheral(peripheralType);
-        Peripheral currentPeripherals = peripherals.stream().filter(peripheral -> peripheral.getClass().getSimpleName().equals(peripheralType)).findFirst().orElse(null);
-        peripherals.remove(currentPeripherals);
-        return String.format(REMOVED_PERIPHERAL,peripheralType, currentPeripherals.getId());
-    }
+        checkComputerId(computerId);
 
-    @Override
-    public String addComponent(int computerId, int id, String componentType, String manufacturer, String model, double price, double overallPerformance, int generation) {
-        Component  component;
-        switch (componentType) {
-            case "CentralProcessingUnit":
-                component = new CentralProcessingUnit(id, manufacturer, model, price, overallPerformance, generation);
-                break;
-            case "Motherboard":
-                component = new Motherboard(id, manufacturer, model, price, overallPerformance, generation);
-                break;
-            case "PowerSupply":
-                component = new PowerSupply(id, manufacturer, model, price, overallPerformance, generation);
-                break;
-            case "RandomAccessMemory":
-                component = new RandomAccessMemory(id, manufacturer, model, price, overallPerformance, generation);
-                break;
-            case "SolidStateDrive":
-                component = new SolidStateDrive(id, manufacturer, model, price, overallPerformance, generation);
-                break;
-            case "VideoCard":
-                component = new VideoCard(id, manufacturer, model, price, overallPerformance, generation);
-                break;
-            default:
-                throw new IllegalArgumentException(INVALID_COMPUTER_TYPE);
-        }
-        for (Component currComponent : components) {
-            if (currComponent.getId() == component.getId()) {
-                throw new IllegalArgumentException(EXISTING_COMPONENT_ID);
-            }
-        }
-        Computer currentComputer = computers.stream().filter(computer1 -> computer1.getId() == computerId).findFirst().orElse(null);
-        currentComputer.addComponent(component);
-        components.add(component);
+        Peripheral peripheral =
+                computers
+                        .get(computerId)
+                        .removePeripheral(peripheralType);
 
-        return String.format(ADDED_COMPONENT,component.getClass().getSimpleName(), id, computerId);
+        peripherals.remove(peripheral.getId());
+
+        return String.format(OutputMessages.REMOVED_PERIPHERAL, peripheralType, peripheral.getId());
     }
 
     @Override
     public String removeComponent(String componentType, int computerId) {
-        Computer currentComputer = computers.stream().filter(computer1 -> computer1.getId() == computerId).findFirst().orElse(null);
-        currentComputer.removeComponent(componentType);
-        Component currentComponent = components.stream().filter(component -> component.getClass().getSimpleName().equals(componentType)).findFirst().orElse(null);
-        components.remove(currentComponent);
-        return String.format(REMOVED_COMPONENT,componentType, currentComponent.getId());
+        checkComputerId(computerId);
+
+        Component component =
+                computers
+                        .get(computerId)
+                        .removeComponent(componentType);
+
+        components.remove(component.getId());
+
+        return String.format(OutputMessages.REMOVED_COMPONENT, componentType, component.getId());
     }
 
     @Override
     public String buyComputer(int id) {
-        Computer currentComputer = computers.stream().filter(computer1 -> computer1.getId() == id).findFirst().orElse(null);
-        return currentComputer.toString();
+        checkComputerId(id);
+        Computer computer = computers.remove(id);
+        return computer.toString();
     }
 
     @Override
     public String BuyBestComputer(double budget) {
-        Computer bestComputer = computers.stream().max(Comparator.comparing(Computer::getOverallPerformance)).get();
-        return null;
+
+        List<Computer> filteredComputers = computers.values()
+                .stream()
+                .filter(c -> c.getPrice() <= budget)
+                .sorted(Comparator.comparing(Computer::getOverallPerformance).reversed())
+                .collect(Collectors.toList());
+
+        if (filteredComputers.isEmpty()) {
+            throw new IllegalArgumentException(String.format(ExceptionMessages.CAN_NOT_BUY_COMPUTER, budget));
+        }
+
+        Computer computer = filteredComputers.get(0);
+
+        computers.remove(computer.getId());
+
+        return computer.toString();
     }
 
     @Override
     public String getComputerData(int id) {
-        Computer currentComputer = computers.stream().filter(computer1 -> computer1.getId() == id).findFirst().orElse(null);
-        return currentComputer.toString();
+        checkComputerId(id);
+        return computers.get(id).toString();
+    }
+
+    private void checkComputerId(int id) {
+        if (!this.computers.containsKey(id)) {
+            throw new IllegalArgumentException(
+                    ExceptionMessages.NOT_EXISTING_COMPUTER_ID);
+        }
     }
 }

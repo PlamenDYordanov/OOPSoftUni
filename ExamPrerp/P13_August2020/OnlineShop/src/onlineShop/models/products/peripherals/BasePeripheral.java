@@ -17,7 +17,8 @@ public abstract class BasePeripheral extends BaseProduct implements Peripheral {
 
     @Override
     public String toString() {
-        String output = String.format(" Connection Type: %s", this.connectionType);
-        return super.toString() + output;
+
+        return "Overall Performance: {overall performance}. Price: {price} - {product type}: " +
+                "{manufacturer} {model} (Id: {id}) Connection Type: {connection type}";
     }
 }
