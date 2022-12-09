@@ -24,6 +24,9 @@ public class ToyRepository implements Repository{
 
     @Override
     public Toy findFirst(String type) {
-        return toys.stream().filter(toy -> toys.getClass().getSimpleName().equals(type)).findFirst().orElse(null);
+        return toys.stream()
+                .filter(toy -> toy.getClass().getSimpleName().equals(type))
+                .findFirst()
+                .orElse(null);
     }
 }

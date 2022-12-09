@@ -23,7 +23,7 @@ public abstract class BaseCat implements Cat{
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
     private void setBreed(String breed) {
         if (ifNullThrows(breed)) {

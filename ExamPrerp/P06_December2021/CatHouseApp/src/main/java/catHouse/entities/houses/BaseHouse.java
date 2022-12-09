@@ -7,6 +7,7 @@ import catHouse.entities.toys.Toy;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 public abstract class BaseHouse implements House {
@@ -55,16 +56,14 @@ public abstract class BaseHouse implements House {
         StringBuilder output = new StringBuilder();
         output.append(String.format("%s %s:", this.name, this.getClass().getSimpleName()));
         output.append(System.lineSeparator());
-        output.append("Cats: ");
         if (cats.isEmpty()) {
-            output.append("none");
+            output.append("Cats: none");
         } else {
-            output.append(cats.stream().map(Cat::getName).collect(Collectors.joining(" ")));
+            output.append(String.format("Cats: %s",cats.stream().map(Cat::getName).collect(Collectors.joining(" "))));
         }
         output.append(System.lineSeparator());
         output.append(String.format("Toys: %d Softness: %d", toys.size(), sumSoftness()));
-        output.append(System.lineSeparator());
-        return output.toString();
+        return output.toString().trim();
     }
 
     @Override
@@ -82,11 +81,11 @@ public abstract class BaseHouse implements House {
 
     @Override
     public Collection<Cat> getCats() {
-        return this.cats;
+        return Collections.unmodifiableCollection(cats);
     }
 
     @Override
     public Collection<Toy> getToys() {
-        return this.toys;
+        return Collections.unmodifiableCollection(toys);
     }
 }

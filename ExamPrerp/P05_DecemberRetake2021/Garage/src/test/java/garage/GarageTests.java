@@ -37,4 +37,17 @@ public class GarageTests {
     public void testAddCarThrowException() {
         garage.addCar(null);
     }
+    @Test
+    public void testGetTheMostExpensiveCar() {
+        garage.addCar(muscleCar);
+        Car theMostExpensiveCar = garage.getTheMostExpensiveCar();
+        Assert.assertEquals("FORD", theMostExpensiveCar.getBrand());
+    }
+    @Test
+    public void testFindAllCarsByBrand() {
+        garage.addCar(sportCar);
+        garage.addCar(muscleCar);
+        List<Car> cars = garage.findAllCarsByBrand("MAZDA");
+        Assert.assertEquals(200, cars.get(0).getMaxSpeed());
+    }
 }
