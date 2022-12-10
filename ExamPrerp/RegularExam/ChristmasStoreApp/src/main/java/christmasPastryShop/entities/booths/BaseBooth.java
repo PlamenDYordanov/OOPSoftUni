@@ -65,7 +65,7 @@ public abstract class BaseBooth implements Booth {
 
     @Override
     public double getPrice() {
-        return getNumberOfPeople()  * pricePerPerson;
+        return getNumberOfPeople() * pricePerPerson;
     }
 
     @Override

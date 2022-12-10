@@ -23,10 +23,10 @@ import static christmasPastryShop.common.OutputMessages.*;
 
 public class ControllerImpl implements Controller {
 
-   private DelicacyRepository<Delicacy> delicacyRepository;
+    private DelicacyRepository<Delicacy> delicacyRepository;
     private CocktailRepository<Cocktail> cocktailRepository;
     private BoothRepository<Booth> boothRepository;
-    private  double totalSum;
+    private double totalSum;
 
     public ControllerImpl(DelicacyRepository<Delicacy> delicacyRepository, CocktailRepository<Cocktail> cocktailRepository, BoothRepository<Booth> boothRepository) {
         this.delicacyRepository = delicacyRepository;
@@ -102,7 +102,7 @@ public class ControllerImpl implements Controller {
                 findFirst()
                 .orElse(null);
         if (currentBooth == null) {
-           throw new IllegalArgumentException(String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople));
+            throw new IllegalArgumentException(String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople));
         }
         currentBooth.reserve(numberOfPeople);
 
@@ -113,12 +113,10 @@ public class ControllerImpl implements Controller {
     public String leaveBooth(int boothNumber) {
         Booth currentBooth = boothRepository.getByNumber(boothNumber);
         double bill = 0;
-        if (currentBooth != null) {
-            bill = currentBooth.getBill();
-            totalSum += bill;
-            currentBooth.clear();
+        bill = currentBooth.getBill();
+        totalSum += bill;
+        currentBooth.clear();
 
-        }
         return String.format(BILL, boothNumber, bill);
     }
 
