@@ -6,10 +6,11 @@ import christmasPastryShop.repositories.interfaces.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
-public class CocktailRepositoryImpl implements Repository<Cocktail>, CocktailRepository<Cocktail> {
+public class CocktailRepositoryImpl extends BaseRepository<Cocktail> implements Repository<Cocktail>, CocktailRepository<Cocktail> {
 
-    Collection<Cocktail> models;
+   private Collection<Cocktail> models;
 
     public CocktailRepositoryImpl() {
         this.models = new ArrayList<>();
@@ -22,9 +23,8 @@ public class CocktailRepositoryImpl implements Repository<Cocktail>, CocktailRep
 
     @Override
     public Collection<Cocktail> getAll() {
-        return this.models;
+        return Collections.unmodifiableCollection(this.models);
     }
-
     @Override
     public void add(Cocktail cocktail) {
         this.models.add(cocktail);

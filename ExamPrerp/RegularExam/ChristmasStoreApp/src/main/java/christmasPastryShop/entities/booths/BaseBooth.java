@@ -32,17 +32,21 @@ public abstract class BaseBooth implements Booth {
         this.delicacyOrders = new ArrayList<>();
     }
 
-    protected void setCapacity(int capacity) {
+    public void setCapacity(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException(INVALID_TABLE_CAPACITY);
         }
         this.capacity = capacity;
     }
-    
+
 
     @Override
     public int getBoothNumber() {
         return this.boothNumber;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -55,9 +59,13 @@ public abstract class BaseBooth implements Booth {
         return this.isReserved;
     }
 
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
     @Override
     public double getPrice() {
-        return this.numberOfPeople * pricePerPerson;
+        return getNumberOfPeople()  * pricePerPerson;
     }
 
     @Override
@@ -65,17 +73,26 @@ public abstract class BaseBooth implements Booth {
         if (numberOfPeople <= 0) {
             throw new IllegalArgumentException(ExceptionMessages.INVALID_NUMBER_OF_PEOPLE);
         }
+        setNumberOfPeople(numberOfPeople);
         this.isReserved = true;
-        double priceForBooth = getPrice();
+        setPrice(pricePerPerson * numberOfPeople);
+    }
 
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
     }
 
     @Override
     public double getBill() {
-        double sumCocktails = delicacyOrders.stream().mapToDouble(x -> x.getPrice() * numberOfPeople).sum();
-        double sumDelicacy = delicacyOrders.stream().mapToDouble(x -> x.getPrice() * numberOfPeople).sum();
-        double totalPricePerPerson = getPrice();
-        return sumDelicacy + sumCocktails + totalPricePerPerson;
+        double currentBill = 0;
+        for (Cocktail cocktailOrder : cocktailOrders) {
+            currentBill += cocktailOrder.getPrice();
+        }
+        for (Delicacy delicacyOrder : delicacyOrders) {
+            currentBill += delicacyOrder.getPrice();
+        }
+
+        return currentBill + getPrice();
     }
 
     @Override
@@ -83,7 +100,8 @@ public abstract class BaseBooth implements Booth {
         this.cocktailOrders.clear();
         this.delicacyOrders.clear();
         this.isReserved = false;
-        this.numberOfPeople = 0;
-        this.price = 0;
+        setNumberOfPeople(0);
+        setPrice(0);
+
     }
 }

@@ -6,9 +6,10 @@ import christmasPastryShop.repositories.interfaces.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
-public class BoothRepositoryImpl implements Repository<Booth>, BoothRepository<Booth> {
-    Collection<Booth> models;
+public class BoothRepositoryImpl extends BaseRepository<Booth> implements Repository<Booth> , BoothRepository<Booth> {
+    private Collection<Booth> models;
 
     public BoothRepositoryImpl() {
         this.models = new ArrayList<>();
@@ -16,7 +17,7 @@ public class BoothRepositoryImpl implements Repository<Booth>, BoothRepository<B
 
     @Override
     public Collection<Booth> getAll() {
-        return this.models;
+        return Collections.unmodifiableCollection(this.models);
     }
 
     @Override

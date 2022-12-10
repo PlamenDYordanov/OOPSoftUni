@@ -23,15 +23,16 @@ import static christmasPastryShop.common.OutputMessages.*;
 
 public class ControllerImpl implements Controller {
 
-    DelicacyRepository<Delicacy> delicacyRepository;
-    CocktailRepository<Cocktail> cocktailRepository;
-    BoothRepository<Booth> boothRepository;
-    private static double totalSum = 0;
+   private DelicacyRepository<Delicacy> delicacyRepository;
+    private CocktailRepository<Cocktail> cocktailRepository;
+    private BoothRepository<Booth> boothRepository;
+    private  double totalSum;
 
     public ControllerImpl(DelicacyRepository<Delicacy> delicacyRepository, CocktailRepository<Cocktail> cocktailRepository, BoothRepository<Booth> boothRepository) {
-        this.delicacyRepository = new DelicacyRepositoryImpl();
-        this.cocktailRepository = new CocktailRepositoryImpl();
-        this.boothRepository = new BoothRepositoryImpl();
+        this.delicacyRepository = delicacyRepository;
+        this.cocktailRepository = cocktailRepository;
+        this.boothRepository = boothRepository;
+        this.totalSum = 0;
     }
 
 
@@ -49,6 +50,7 @@ public class ControllerImpl implements Controller {
                 delicacy = new Stolen(name, price);
                 break;
         }
+
         delicacyRepository.add(delicacy);
         return String.format(DELICACY_ADDED, name, type);
     }
@@ -67,6 +69,8 @@ public class ControllerImpl implements Controller {
                 cocktail = new MulledWine(name, size, brand);
                 break;
         }
+
+
         cocktailRepository.add(cocktail);
         return String.format(COCKTAIL_ADDED, name, brand);
     }
@@ -85,19 +89,19 @@ public class ControllerImpl implements Controller {
                 booth = new PrivateBooth(boothNumber, capacity);
                 break;
         }
+
+
         boothRepository.add(booth);
         return String.format(BOOTH_ADDED, boothNumber);
     }
 
     @Override
     public String reserveBooth(int numberOfPeople) {
-        Booth currentBooth = boothRepository.getAll().stream().filter(booth -> !booth.isReserved()).findFirst().orElse(null);
-        if (currentBooth.getCapacity() < numberOfPeople) {
-            return String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople);
+        Booth currentBooth = boothRepository.getAll().stream().filter(booth -> !booth.isReserved() && booth.getCapacity() >= numberOfPeople).findFirst().orElse(null);
+        if (currentBooth == null) {
+            throw new IllegalArgumentException(String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople));
         }
-        if (currentBooth.getCapacity() >= numberOfPeople) {
-            currentBooth.reserve(numberOfPeople);
-        }
+        currentBooth.reserve(numberOfPeople);
 
         return String.format(BOOTH_RESERVED, currentBooth.getBoothNumber(), numberOfPeople);
     }
@@ -105,10 +109,14 @@ public class ControllerImpl implements Controller {
     @Override
     public String leaveBooth(int boothNumber) {
         Booth currentBooth = boothRepository.getByNumber(boothNumber);
-        double bill = currentBooth.getBill();
-        totalSum += bill;
-        currentBooth.clear();
-        return String.format(BILL,boothNumber, bill);
+        double bill = 0;
+        if (currentBooth != null) {
+            bill = currentBooth.getBill();
+            totalSum += bill;
+            currentBooth.clear();
+
+        }
+        return String.format(BILL, boothNumber, bill);
     }
 
     @Override

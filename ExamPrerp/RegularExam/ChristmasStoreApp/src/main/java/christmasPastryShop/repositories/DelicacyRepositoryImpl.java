@@ -6,9 +6,10 @@ import christmasPastryShop.repositories.interfaces.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
-public class DelicacyRepositoryImpl implements Repository<Delicacy>, DelicacyRepository<Delicacy> {
-    Collection<Delicacy> models;
+public class DelicacyRepositoryImpl extends BaseRepository<Delicacy> implements Repository<Delicacy>, DelicacyRepository<Delicacy> {
+   private Collection<Delicacy> models;
 
     public DelicacyRepositoryImpl() {
         this.models = new ArrayList<>();
@@ -21,7 +22,7 @@ public class DelicacyRepositoryImpl implements Repository<Delicacy>, DelicacyRep
 
     @Override
     public Collection<Delicacy> getAll() {
-        return this.models;
+        return Collections.unmodifiableCollection(this.models);
     }
 
     @Override
