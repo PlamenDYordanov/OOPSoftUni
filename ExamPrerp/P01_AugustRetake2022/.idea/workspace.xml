@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cca27a0-cb55-4806-8c12-a751de6fb8bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../P012_AugustRetake2020/EasterRaces/src/easterRaces/entities/cars/BaseCar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../P012_AugustRetake2020/EasterRaces/src/easterRaces/entities/cars/MuscleCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../P012_AugustRetake2020/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../P012_AugustRetake2020/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/discoverer/Anthropologist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/discoverer/Archaeologist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/discoverer/Geologist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/museum/BaseMuseum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/operation/OperationImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/spot/SpotImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/discoverer/BaseDiscoverer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/discoverer/BaseDiscoverer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/operation/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SeconPreparation/P01_RetakeAugust2022/GoldDiggerApp/src/main/java/goldDigger/models/operation/Operation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

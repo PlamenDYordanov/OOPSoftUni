@@ -1,6 +1,6 @@
 package goldDigger.models.operation;
 
-import goldDigger.models.disocverer.Discoverer;
+import goldDigger.models.discoverer.Discoverer;
 import goldDigger.models.spot.Spot;
 
 import java.util.Collection;

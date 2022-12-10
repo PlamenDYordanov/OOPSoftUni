@@ -1,11 +1,12 @@
 package goldDigger.models.discoverer;
 
+import goldDigger.models.museum.BaseMuseum;
 import goldDigger.models.museum.Museum;
 
 import static goldDigger.common.ExceptionMessages.DISCOVERER_ENERGY_LESS_THAN_ZERO;
 import static goldDigger.common.ExceptionMessages.DISCOVERER_NAME_NULL_OR_EMPTY;
 
-public class BaseDiscoverer implements Discoverer{
+public abstract class BaseDiscoverer implements Discoverer{
     private String name;
     private double energy;
     private Museum museum;
@@ -13,6 +14,7 @@ public class BaseDiscoverer implements Discoverer{
     public BaseDiscoverer(String name, double energy) {
         this.name = name;
         this.energy = energy;
+        this.museum = new BaseMuseum();
     }
 
     public void setName(String name) {
