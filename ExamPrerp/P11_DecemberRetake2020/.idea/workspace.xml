@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="335ed6df-45f0-4112-9d78-40dd4fd24fe3" name="Changes" comment="" />
+    <list default="true" id="335ed6df-45f0-4112-9d78-40dd4fd24fe3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../RegularExam/ChristmasStoreApp/src/main/java/christmasPastryShop.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../RegularExam/ChristmasStoreApp/src/main/java/christmasPastryShop.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RegularExam/ChristmasStoreApp/target/classes/christmasPastryShop/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RegularExam/ChristmasStoreApp/target/classes/christmasPastryShop/Main.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,13 +35,10 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/OOP_SoftUni/ExamPrerp/P012_AugustRetake2020"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="viceCity.Main" />

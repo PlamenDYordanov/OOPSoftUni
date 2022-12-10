@@ -92,9 +92,6 @@ public class ControllerImpl implements Controller {
     @Override
     public String reserveBooth(int numberOfPeople) {
         Booth currentBooth = boothRepository.getAll().stream().filter(booth -> !booth.isReserved()).findFirst().orElse(null);
-        if (currentBooth == null) {
-            return String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople);
-        }
         if (currentBooth.getCapacity() < numberOfPeople) {
             return String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople);
         }
