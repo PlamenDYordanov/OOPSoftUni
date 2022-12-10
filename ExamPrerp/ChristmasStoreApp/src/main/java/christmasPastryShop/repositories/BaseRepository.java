@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public abstract class BaseRepository<T> implements Repository<T> {
+public class BaseRepository<T> implements Repository<T> {
 
     private Collection<T> models;
+
     public BaseRepository() {
         this.models = new ArrayList<>();
     }
+
     @Override
     public Collection<T> getAll() {
         return Collections.unmodifiableCollection(models);
@@ -19,6 +21,6 @@ public abstract class BaseRepository<T> implements Repository<T> {
 
     @Override
     public void add(T t) {
-        models.add(t);
+        this.models.add(t);
     }
 }

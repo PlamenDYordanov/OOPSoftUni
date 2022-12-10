@@ -10,38 +10,34 @@ import christmasPastryShop.entities.delicacies.Stolen;
 import christmasPastryShop.entities.delicacies.interfaces.Delicacy;
 import christmasPastryShop.entities.cocktails.interfaces.Cocktail;
 import christmasPastryShop.entities.booths.interfaces.Booth;
-import christmasPastryShop.repositories.BoothRepositoryImpl;
-import christmasPastryShop.repositories.CocktailRepositoryImpl;
-import christmasPastryShop.repositories.DelicacyRepositoryImpl;
 import christmasPastryShop.repositories.interfaces.BoothRepository;
 import christmasPastryShop.repositories.interfaces.CocktailRepository;
 import christmasPastryShop.repositories.interfaces.DelicacyRepository;
 
-import static christmasPastryShop.common.ExceptionMessages.BOOTH_EXIST;
-import static christmasPastryShop.common.ExceptionMessages.FOOD_OR_DRINK_EXIST;
+import static christmasPastryShop.common.ExceptionMessages.*;
 import static christmasPastryShop.common.OutputMessages.*;
 
 public class ControllerImpl implements Controller {
 
-   private DelicacyRepository<Delicacy> delicacyRepository;
+    private DelicacyRepository<Delicacy> delicacyRepository;
     private CocktailRepository<Cocktail> cocktailRepository;
     private BoothRepository<Booth> boothRepository;
-    private  double totalSum;
+    private double totalStoreIncome;
 
     public ControllerImpl(DelicacyRepository<Delicacy> delicacyRepository, CocktailRepository<Cocktail> cocktailRepository, BoothRepository<Booth> boothRepository) {
         this.delicacyRepository = delicacyRepository;
         this.cocktailRepository = cocktailRepository;
         this.boothRepository = boothRepository;
-        this.totalSum = 0;
     }
 
 
     @Override
     public String addDelicacy(String type, String name, double price) {
-        if (delicacyRepository.getByName(name) != null) {
+        Delicacy delicacy = delicacyRepository.getByName(name);
+        if (delicacy != null) {
             throw new IllegalArgumentException(String.format(FOOD_OR_DRINK_EXIST, type, name));
         }
-        Delicacy delicacy = null;
+
         switch (type) {
             case "Gingerbread":
                 delicacy = new Gingerbread(name, price);
@@ -51,37 +47,38 @@ public class ControllerImpl implements Controller {
                 break;
         }
 
-        delicacyRepository.add(delicacy);
+        this.delicacyRepository.add(delicacy);
         return String.format(DELICACY_ADDED, name, type);
     }
 
     @Override
     public String addCocktail(String type, String name, int size, String brand) {
-        if (cocktailRepository.getByName(name) != null) {
+        Cocktail cocktail =  this.cocktailRepository.getByName(name);
+        if (cocktail != null){
             throw new IllegalArgumentException(String.format(FOOD_OR_DRINK_EXIST, type, name));
         }
-        Cocktail cocktail = null;
-        switch (type) {
-            case "Hibernation":
-                cocktail = new Hibernation(name, size, brand);
-                break;
+
+        switch (type){
             case "MulledWine":
                 cocktail = new MulledWine(name, size, brand);
                 break;
+            case "Hibernation":
+                cocktail = new Hibernation(name, size, brand);
+                break;
         }
 
-
-        cocktailRepository.add(cocktail);
+        this.cocktailRepository.add(cocktail);
         return String.format(COCKTAIL_ADDED, name, brand);
     }
 
     @Override
     public String addBooth(String type, int boothNumber, int capacity) {
-        if (boothRepository.getByNumber(boothNumber) != null) {
+        Booth booth = this.boothRepository.getByNumber(boothNumber);
+        if (booth != null){
             throw new IllegalArgumentException(String.format(BOOTH_EXIST, boothNumber));
         }
-        Booth booth = null;
-        switch (type) {
+
+        switch (type){
             case "OpenBooth":
                 booth = new OpenBooth(boothNumber, capacity);
                 break;
@@ -90,40 +87,36 @@ public class ControllerImpl implements Controller {
                 break;
         }
 
-
-        boothRepository.add(booth);
+        this.boothRepository.add(booth);
         return String.format(BOOTH_ADDED, boothNumber);
     }
 
     @Override
     public String reserveBooth(int numberOfPeople) {
-        Booth currentBooth = boothRepository.getAll().stream()
-                .filter(booth -> !booth.isReserved() && booth.getCapacity() >= numberOfPeople).
-                findFirst()
+        Booth boothToReserve = this.boothRepository.getAll().stream()
+                .filter(booth -> !booth.isReserved() && booth.getCapacity()>=numberOfPeople)
+                .findFirst()
                 .orElse(null);
-        if (currentBooth == null) {
-           throw new IllegalArgumentException(String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople));
-        }
-        currentBooth.reserve(numberOfPeople);
 
-        return String.format(BOOTH_RESERVED, currentBooth.getBoothNumber(), numberOfPeople);
+        if (boothToReserve == null){
+            return String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople);
+        }
+
+        boothToReserve.reserve(numberOfPeople);
+        return String.format(BOOTH_RESERVED, boothToReserve.getBoothNumber(), numberOfPeople);
     }
 
     @Override
     public String leaveBooth(int boothNumber) {
-        Booth currentBooth = boothRepository.getByNumber(boothNumber);
-        double bill = 0;
-        if (currentBooth != null) {
-            bill = currentBooth.getBill();
-            totalSum += bill;
-            currentBooth.clear();
-
-        }
-        return String.format(BILL, boothNumber, bill);
+        Booth boothToLeave = this.boothRepository.getByNumber(boothNumber);
+        double currentBill = boothToLeave.getBill();
+        totalStoreIncome+=currentBill;
+        boothToLeave.clear();
+        return String.format(BILL, boothNumber, currentBill);
     }
 
     @Override
     public String getIncome() {
-        return String.format(TOTAL_INCOME, totalSum);
+        return String.format(TOTAL_INCOME, this.totalStoreIncome);
     }
 }
