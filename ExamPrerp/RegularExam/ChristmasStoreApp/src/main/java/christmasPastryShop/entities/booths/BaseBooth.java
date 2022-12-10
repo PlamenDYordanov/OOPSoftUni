@@ -1,5 +1,6 @@
 package christmasPastryShop.entities.booths;
 
+import christmasPastryShop.common.ExceptionMessages;
 import christmasPastryShop.common.enums.CocktailType;
 import christmasPastryShop.entities.booths.interfaces.Booth;
 import christmasPastryShop.entities.cocktails.interfaces.Cocktail;
@@ -37,13 +38,7 @@ public abstract class BaseBooth implements Booth {
         }
         this.capacity = capacity;
     }
-
-    private void setNumberOfPeople(int numberOfPeople) {
-        if (numberOfPeople <= 0) {
-            throw new IllegalArgumentException(INVALID_NUMBER_OF_PEOPLE);
-        }
-        this.numberOfPeople = numberOfPeople;
-    }
+    
 
     @Override
     public int getBoothNumber() {
@@ -67,8 +62,10 @@ public abstract class BaseBooth implements Booth {
 
     @Override
     public void reserve(int numberOfPeople) {
+        if (numberOfPeople <= 0) {
+            throw new IllegalArgumentException(ExceptionMessages.INVALID_NUMBER_OF_PEOPLE);
+        }
         this.isReserved = true;
-        setNumberOfPeople(numberOfPeople);
         double priceForBooth = getPrice();
 
     }
