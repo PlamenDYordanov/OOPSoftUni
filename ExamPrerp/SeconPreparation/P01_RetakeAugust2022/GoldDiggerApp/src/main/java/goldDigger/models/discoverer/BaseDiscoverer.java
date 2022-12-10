@@ -12,8 +12,8 @@ public abstract class BaseDiscoverer implements Discoverer{
     private Museum museum;
 
     public BaseDiscoverer(String name, double energy) {
-        this.name = name;
-        this.energy = energy;
+        this.setName(name);
+        this.setEnergy(energy);
         this.museum = new BaseMuseum();
     }
 
