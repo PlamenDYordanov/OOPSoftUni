@@ -4,11 +4,16 @@ import glacialExpedition.models.states.State;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class StateRepository implements Repository<State>{
 
     private Map<String, State> states;
+
+    public StateRepository() {
+        this.states = new LinkedHashMap<>();
+    }
 
     @Override
     public Collection<State> getCollection() {
@@ -17,7 +22,7 @@ public class StateRepository implements Repository<State>{
 
     @Override
     public void add(State entity) {
-        this.states.put(entity.getName(), entity);
+        this.states.putIfAbsent(entity.getName(), entity);
     }
 
     @Override
