@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import static spaceStation.common.ExceptionMessages.PLANET_NAME_NULL_OR_EMPTY;
 
-public class PlanetImpl {
+public class PlanetImpl implements Planet {
     private String name;
     private Collection<String> items;
 
@@ -19,5 +19,15 @@ public class PlanetImpl {
             throw new NullPointerException(PLANET_NAME_NULL_OR_EMPTY);
         }}
         this.name = name;
+    }
+
+    @Override
+    public Collection<String> getItems() {
+        return this.items;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 }
