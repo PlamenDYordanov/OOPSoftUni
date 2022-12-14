@@ -21,6 +21,9 @@ public abstract class BaseFish implements Fish{
         this.species = species;
     }
 
+    public String getSpecies() {
+        return species;
+    }
 
     public void setSize(int size) {
         this.size = size;
@@ -38,6 +41,7 @@ public abstract class BaseFish implements Fish{
         if (name == null || name.trim().isEmpty()) {
             throw new NullPointerException(FISH_NAME_NULL_OR_EMPTY);
         }
+        this.name = name;
     }
 
 
