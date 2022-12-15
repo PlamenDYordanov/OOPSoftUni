@@ -28,7 +28,7 @@ public class Pistol extends BaseGun {
     }
 
     private void reload() {
-        setTotalBullets(getTotalBullets() - getBulletsPerBarrel());
+        setTotalBullets(getTotalBullets() - BULLETS_PER_BARREL);
         setBulletsPerBarrel(BULLETS_PER_BARREL);
     }
 }

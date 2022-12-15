@@ -20,16 +20,16 @@ public class Rifle extends BaseGun {
 
     @Override
     public int fire() {
-        if (getBulletsPerBarrel() == 0) {
+        setBulletsPerBarrel(getBulletsPerBarrel() - 5);
+        if (getBulletsPerBarrel() == 0 && getTotalBullets() >= 50) {
             reload();
         }
-        setBulletsPerBarrel(getBulletsPerBarrel() - BULLETS_PER_SHOOT);
         return BULLETS_PER_SHOOT;
     }
 
     private void reload() {
-        setTotalBullets(getTotalBullets() - getBulletsPerBarrel());
         setBulletsPerBarrel(BULLETS_PER_BARREL);
+        setTotalBullets(getTotalBullets() - BULLETS_PER_BARREL);
     }
 }
 

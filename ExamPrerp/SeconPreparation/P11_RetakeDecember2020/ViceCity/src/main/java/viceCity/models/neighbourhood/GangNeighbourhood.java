@@ -14,7 +14,8 @@ public class GangNeighbourhood implements Neighbourhood{
                     break;
                 }
                 while (civilPlayer.isAlive() && gun.canFire()) {
-                    civilPlayer.takeLifePoints( gun.fire());
+                    int fire = gun.fire();
+                    civilPlayer.takeLifePoints(fire);
                 }
             }
         }

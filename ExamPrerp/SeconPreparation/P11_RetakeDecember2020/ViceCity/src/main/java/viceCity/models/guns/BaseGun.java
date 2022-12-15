@@ -34,7 +34,10 @@ public abstract class BaseGun implements Gun{
         }
         this.totalBullets = totalBullets;
     }
-
+    @Override
+    public boolean canFire() {
+        return getTotalBullets() > 0 || getBulletsPerBarrel() > 0;
+    }
     @Override
     public String getName() {
         return this.name;
