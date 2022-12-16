@@ -4,6 +4,7 @@ import bakery.entities.bakedFoods.interfaces.BakedFood;
 import bakery.entities.drinks.interfaces.Drink;
 import bakery.entities.tables.interfaces.Table;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import static bakery.common.ExceptionMessages.INVALID_NUMBER_OF_PEOPLE;
@@ -24,6 +25,8 @@ public abstract class BaseTable implements Table {
         this.setCapacity(capacity);
         this.pricePerPerson = pricePerPerson;
         this.isReserved = false;
+        this.foodOrders = new ArrayList<>();
+        this.drinkOrders = new ArrayList<>();
     }
 
     public void setCapacity(int capacity) {
