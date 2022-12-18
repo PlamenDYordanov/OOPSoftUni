@@ -1,0 +1,3 @@
+toString() доста ме затрудни. 
+getPrice() в BaseComputer.
+BuyBestComputer() в controllera

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="easterRaces1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/EasterRaces/out/production/EasterRaces/easterRaces.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
