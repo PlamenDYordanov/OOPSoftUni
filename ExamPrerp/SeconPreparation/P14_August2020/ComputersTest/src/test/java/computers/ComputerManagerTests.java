@@ -40,7 +40,7 @@ public class ComputerManagerTests {
     public void testGetComputerThrowException() {
         computerManager.getComputer("ASD","DSA");
     }
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testGetComputerThrowNull() {
         computerManager.getComputer(null, null);
     }
@@ -55,6 +55,10 @@ public class ComputerManagerTests {
         List<Computer> intelPC = computerManager.getComputersByManufacturer("Intel");
         Assert.assertEquals("I5", intelPC.get(0).getModel());
         Assert.assertEquals("rx5600x", intelPC.get(1).getModel());
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testComputerByManufacturerThrowNull () {
+        computerManager.getComputersByManufacturer(null);
     }
     @Test
     public void testRemovePc() {
