@@ -7,7 +7,12 @@ public class BlackMagic extends MagicImpl{
 
     @Override
     public int fire() {
-        setBulletsCount(Math.max(0, getBulletsCount() - 10));
+        if (getBulletsCount() - 10 >= 0){
+            setBulletsCount(Math.max(0, getBulletsCount() - 10));
+        }else {
+            setBulletsCount(0);
+            return 0;
+        }
         return 10;
     }
 }

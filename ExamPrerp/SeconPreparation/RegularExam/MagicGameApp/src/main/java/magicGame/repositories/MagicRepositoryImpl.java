@@ -6,6 +6,8 @@ import magicGame.repositories.interfaces.MagicRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import static magicGame.common.ExceptionMessages.INVALID_MAGIC_REPOSITORY;
+
 public class MagicRepositoryImpl implements MagicRepository<Magic> {
     private Collection<Magic> data;
 
@@ -20,6 +22,9 @@ public class MagicRepositoryImpl implements MagicRepository<Magic> {
 
     @Override
     public void addMagic(Magic model) {
+        if (model == null) {
+            throw new NullPointerException(INVALID_MAGIC_REPOSITORY);
+        }
             this.data.add(model);
     }
 

@@ -1,7 +1,6 @@
 package magicGame.models.magics;
 
-import static magicGame.common.ExceptionMessages.INVALID_MAGIC;
-import static magicGame.common.ExceptionMessages.INVALID_MAGIC_BULLETS_COUNT;
+import static magicGame.common.ExceptionMessages.*;
 
 public abstract class MagicImpl implements Magic {
     private String name;
@@ -14,7 +13,7 @@ public abstract class MagicImpl implements Magic {
 
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new NullPointerException(INVALID_MAGIC);
+            throw new NullPointerException(INVALID_MAGIC_NAME);
         }
         this.name = name;
     }

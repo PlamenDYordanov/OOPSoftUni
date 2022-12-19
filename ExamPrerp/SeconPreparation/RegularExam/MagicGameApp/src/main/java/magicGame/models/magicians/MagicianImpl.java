@@ -70,8 +70,19 @@ public class MagicianImpl implements Magician{
             if (getProtection() > 0) {
                 setProtection(getProtection() - 1);
             }else {
-                setHealth(getHealth() - 1);
+              setHealth(Math.max(0,getHealth() - 1));
             }
         }
+    }
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%s: %s", this.getClass().getSimpleName(), getUsername())).append(System.lineSeparator());
+        sb.append(String.format("Health: %d", getHealth())).append(System.lineSeparator());
+        sb.append(String.format("Protection: %d", getProtection())).append(System.lineSeparator());
+        sb.append(String.format("Magic: %s",getMagic().getName()));
+
+        return sb.toString();
     }
 }

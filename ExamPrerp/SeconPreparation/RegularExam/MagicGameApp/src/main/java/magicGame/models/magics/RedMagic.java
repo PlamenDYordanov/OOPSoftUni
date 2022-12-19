@@ -7,7 +7,12 @@ public class RedMagic extends MagicImpl{
 
     @Override
     public int fire() {
-        setBulletsCount(Math.max(0, getBulletsCount() - 1));
+        if (getBulletsCount() - 1 >= 0){
+            setBulletsCount(Math.max(0, getBulletsCount() - 1));
+        }else {
+            setBulletsCount(0);
+            return 0;
+        }
         return 1;
     }
 }

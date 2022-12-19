@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="magicGame">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/magicGame.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
