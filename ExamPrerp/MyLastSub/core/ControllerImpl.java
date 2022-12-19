@@ -97,7 +97,11 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String reserveBooth(int numberOfPeople) {
-        Booth currentBooth = boothRepository.getAll().stream().filter(booth -> !booth.isReserved() && booth.getCapacity() >= numberOfPeople).findFirst().orElse(null);
+        Booth currentBooth = boothRepository
+                .getAll()
+                .stream()
+                .filter(booth -> !booth.isReserved() && booth.getCapacity() >= numberOfPeople)
+                .findFirst().orElse(null);
         if (currentBooth == null) {
             throw new IllegalArgumentException(String.format(RESERVATION_NOT_POSSIBLE, numberOfPeople));
         }

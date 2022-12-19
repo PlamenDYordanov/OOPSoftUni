@@ -19,23 +19,23 @@ public class MagicianTests {
         magician.addMagic(magic1);
     }
     @Test
-    public void setUsernameThrowException () {
+    public void setUsername() {
         Assert.assertEquals("Plamen",magician.getUsername());
     }
     @Test(expected = NullPointerException.class)
-    public void testThrowException() {
-        magician= new Magician(null, 300);
+    public void testThrowExceptionSetNameNull() {
+        magician = new Magician(null, 300);
     }
     @Test
     public void testGetHealth() {
         Assert.assertEquals(200, magician.getHealth());
     }
     @Test(expected =  IllegalArgumentException.class)
-    public void testHealthThrowException() {
+    public void testHealthThrowExceptionNegativeNumber() {
         magician = new Magician("Ivan", -1);
     }
     @Test
-    public  void testMagics() {
+    public  void testGetMagics() {
         magician.addMagic(magic2);
         List<Magic> magics = magician.getMagics();
         Assert.assertEquals("Calypso", magics.get(1).getName());
@@ -69,13 +69,13 @@ public class MagicianTests {
     }
     @Test
     public void testGetMagic() {
-        Magic calypso = magician.getMagic("Iris");
-            Assert.assertEquals(50, calypso.getBullets());
+        Magic iris = magician.getMagic("Iris");
+            Assert.assertEquals(50, iris.getBullets());
     }
     @Test
     public void testGetMagicNull() {
-        Magic calypso = magician.getMagic("FIRE");
-        Assert.assertNull(calypso);
+        Magic magic = magician.getMagic("FIRE");
+        Assert.assertNull(magic);
     }
 
     //TODO
