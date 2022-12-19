@@ -67,7 +67,6 @@ public class ControllerImpl implements Controller {
                 break;
         }
         this.drinkRepository.add(drink);
-        //TODO:
         return String.format(DRINK_ADDED, name, brand);
     }
 
@@ -86,7 +85,6 @@ public class ControllerImpl implements Controller {
                 break;
         }
         this.tableRepository.add(table);
-        //TODO:
         return String.format(TABLE_ADDED, tableNumber);
     }
 
