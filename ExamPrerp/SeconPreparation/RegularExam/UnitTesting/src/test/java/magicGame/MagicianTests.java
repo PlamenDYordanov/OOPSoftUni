@@ -75,7 +75,7 @@ public class MagicianTests {
     @Test
     public void testGetMagicNull() {
         Magic calypso = magician.getMagic("FIRE");
-        Assert.assertEquals(null, calypso);
+        Assert.assertNull(calypso);
     }
 
     //TODO
